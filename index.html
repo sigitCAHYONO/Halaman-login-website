@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: url("https://files.catbox.moe/dqjjbs.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.9; 
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      position: relative;
+    }
+
+    .login-form {
+      text-align: center;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #4CAF50; 
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+    }
+
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      animation: slideInFromLeft 1s ease;
+    }
+
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    #waveform {
+      margin-top: 20px; 
+      height: 50px; 
+    }
+  </style>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <form class="login-form" id="loginForm">
+      <h1>Login</h1>
+      <label for="username"><b>Username</b></label>
+      <input type="text" id="username" placeholder="Enter Username" name="username" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" id="password" placeholder="Enter Password" name="password" required>
+
+      <button type="submit">Login</button>
+
+      <a href="https://wa.me/6285891267541" target="_blank">
+        <button type="button" id="mintaPasswordButton">Minta Password</button>
+      </a>
+    </form>
+
+    <button id="playButton">Putar Audio</button>
+    <div id="waveform"></div>
+    <audio id="myAudio" src="https://od.lk/s/OV8yNDU5MjkzMzJf/AUD-20250112-WA0214.mp3"></audio> 
+
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const username = usernameInput.value;
+      const password = passwordInput.value;
+
+      if (username === 'pedo' && password === '123') { 
+        window.location.href = 'https://sigitcahyono.github.io/Website-download-video-H/';
+      } else {
+        alert('Username atau password salah!');
+      }
+    });
+
+    // JavaScript untuk visualisasi audio
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'violet',
+      progressColor: 'purple'
+    });
+
+    const audio = document.getElementById('myAudio');
+    const playButton = document.getElementById('playButton');
+
+    wavesurfer.load(audio.src);
+
+    playButton.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playButton.textContent = "Pause Audio"; 
+      } else {
+        audio.pause();
+        playButton.textContent = "Putar Audio"; 
+      }
+    });
+
+    audio.addEventListener('pause', () => {
+      wavesurfer.pause();
+    });
+  </script>
+
+</body>
+</html>
