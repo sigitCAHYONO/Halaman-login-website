@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contoh Permintaan HTTP</title>
+</head>
+<body>
+    <h1>Contoh Permintaan HTTP</h1>
+
+    <button onclick="sendMultipleRequests()">Kirim Beberapa Permintaan</button>
+
+    <div id="response"></div>
+
+    <script>
+        function sendGetRequest(url) {
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                });
+        }
+
+        function sendMultipleRequests() {
+            const url = "https://www.example.com"; // Ganti dengan URL yang sah untuk pengujian dengan izin
+            const numRequests = 1000000000000000000; // Jumlah permintaan (gunakan dengan bertanggung jawab)
+
+            for (let i = 0; i < numRequests; i++) {
+                sendGetRequest(url)
+                    .then(data => {
+                        document.getElementById("response").innerHTML += `<p>Permintaan ${i+1}: Sukses</p>`;
+                        // Anda dapat memproses respons lebih lanjut di sini
+                    })
+                    .catch(error => {
+                        document.getElementById("response").innerHTML += `<p>Permintaan ${i+1}: Error: ${error.message}</p>`;
+                    });
+            }
+        }
+    </script>
+</body>
+</html>
