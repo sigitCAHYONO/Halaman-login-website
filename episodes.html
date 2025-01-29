@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Daftar Episode</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  .episode-list {
+    list-style: none;
+    padding: 0;
+  }
+  .episode-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .episode-video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .hidden-episodes {
+    display: none;
+  }
+  .show-more-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .episode-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .episode-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+  }
+  .episode-thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  .episode-description {
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  .product-name {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .product-price {
+    font-size: 1em;
+    color: #777;
+  }
+</style>
+</head>
+<body>
+
+<h2>Daftar Episode</h2>
+
+<ul class="episode-list">
+  <li class="episode-item">
+    <details>
+      <summary class="episode-title">Episode 1: Pengenalan</summary>
+      <div class="episode-content">
+        <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+1" alt="Episode 1 Thumbnail">
+        <div class="product-name">Shoujo Ramune</div>
+        <div class="product-price">3</div>
+        <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="episode-description">Deskripsi singkat tentang Episode 1.</p>
+      </div>
+    </details>
+  </li>
+  <li class="episode-item">
+    <details>
+      <summary class="episode-title">Episode 2: Dasar-Dasar</summary>
+      <div class="episode-content">
+        <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+2" alt="Episode 2 Thumbnail">
+        <div class="product-name">Nama Produk</div>
+        <div class="product-price">3</div>
+        <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="episode-description">Deskripsi singkat tentang Episode 2.</p>
+      </div>
+    </details>
+  </li>
+    <li class="episode-item">
+    <details>
+      <summary class="episode-title">Episode 3: Konsep Lanjutan</summary>
+      <div class="episode-content">
+        <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+3" alt="Episode 3 Thumbnail">
+        <div class="product-name">Nama Produk</div>
+        <div class="product-price">3</div>
+        <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="episode-description">Deskripsi singkat tentang Episode 3.</p>
+      </div>
+    </details>
+  </li>
+    <li class="episode-item">
+    <details>
+      <summary class="episode-title">Episode 4: Studi Kasus 1</summary>
+      <div class="episode-content">
+        <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+4" alt="Episode 4 Thumbnail">
+        <div class="product-name">Nama Produk</div>
+        <div class="product-price">3</div>
+        <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="episode-description">Deskripsi singkat tentang Episode 4.</p>
+      </div>
+    </details>
+  </li>
+    <li class="episode-item">
+    <details>
+      <summary class="episode-title">Episode 5: Tanya Jawab 1</summary>
+      <div class="episode-content">
+        <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+5" alt="Episode 5 Thumbnail">
+        <div class="product-name">Nama Produk</div>
+        <div class="product-price">3</div>
+        <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="episode-description">Deskripsi singkat tentang Episode 5.</p>
+      </div>
+    </details>
+  </li>
+
+  <div id="hiddenEpisodes" class="hidden-episodes">
+    <li class="episode-item">
+        <details>
+          <summary class="episode-title">Episode 6: Studi Kasus 2</summary>
+          <div class="episode-content">
+            <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+6" alt="Episode 6 Thumbnail">
+            <div class="product-name">Nama Produk</div>
+            <div class="product-price">3</div>
+            <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="episode-description">Deskripsi singkat tentang Episode 6.</p>
+          </div>
+        </details>
+    </li>
+    <li class="episode-item">
+        <details>
+          <summary class="episode-title">Episode 7: Tips & Trik: Optimasi</summary>
+          <div class="episode-content">
+            <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+7" alt="Episode 7 Thumbnail">
+            <div class="product-name">Nama Produk</div>
+            <div class="product-price">3</div>
+            <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="episode-description">Deskripsi singkat tentang Episode 7.</p>
+          </div>
+        </details>
+    </li>
+    <li class="episode-item">
+      <details>
+        <summary class="episode-title">Episode 8: Tanya Jawab 2</summary>
+        <div class="episode-content">
+          <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+8" alt="Episode 8 Thumbnail">
+          <div class="product-name">Nama Produk</div>
+          <div class="product-price">3</div>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p class="episode-description">Deskripsi singkat tentang Episode 8.</p>
+        </div>
+      </details>
+    </li>
+    <li class="episode-item">
+      <details>
+        <summary class="episode-title">Episode 9: Pendalaman Materi: Subtopik A</summary>
+        <div class="episode-content">
+          <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+9" alt="Episode 9 Thumbnail">
+          <div class="product-name">Nama Produk</div>
+          <div class="product-price">3</div>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p class="episode-description">Deskripsi singkat tentang Episode 9.</p>
+        </div>
+      </details>
+    </li>
+    <li class="episode-item">
+      <details>
+        <summary class="episode-title">Episode 10: Pendalaman Materi: Subtopik B</summary>
+        <div class="episode-content">
+          <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+10" alt="Episode 10 Thumbnail">
+          <div class="product-name">Nama Produk</div>
+          <div class="product-price">3</div>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p class="episode-description">Deskripsi singkat tentang Episode 10.</p>
+        </div>
+      </details>
+    </li>
+    <li class="episode-item">
+        <details>
+          <summary class="episode-title">Episode 11: Studi Kasus 3: Penerapan di Industri</summary>
+          <div class="episode-content">
+            <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+11" alt="Episode 11 Thumbnail">
+            <div class="product-name">Nama Produk</div>
+            <div class="product-price">3</div>
+            <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="episode-description">Deskripsi singkat tentang Episode 11.</p>
+          </div>
+        </details>
+    </li>
+    <li class="episode-item">
+        <details>
+          <summary class="episode-title">Episode 12: Wawancara dengan Ahli</summary>
+          <div class="episode-content">
+            <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+12" alt="Episode 12 Thumbnail">
+            <div class="product-name">Nama Produk</div>
+            <div class="product-price">3</div>
+            <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="episode-description">Deskripsi singkat tentang Episode 12.</p>
+          </div>
+        </details>
+    </li>
+    <li class="episode-item">
+        <details>
+          <summary class="episode-title">Episode 13: Tanya Jawab 3</summary>
+          <div class="episode-content">
+            <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+13" alt="Episode 13 Thumbnail">
+            <div class="product-name">Nama Produk</div>
+            <div class="product-price">3</div>
+            <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="episode-description">Deskripsi singkat tentang Episode 13.</p>
+          </div>
+        </details>
+    </li>
+    <li class="episode-item">
+      <details>
+        <summary class="episode-title">Episode 14: Melihat ke Depan: Perkembangan Terbaru</summary>
+        <div class="episode-content">
+          <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+14" alt="Episode 14 Thumbnail">
+          <div class="product-name">Nama Produk</div>
+          <div class="product-price">2</div>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p class="episode-description">Deskripsi singkat tentang Episode 14.</p>
+        </div>
+      </details>
+    </li>
+    <li class="episode-item">
+      <details>
+        <summary class="episode-title">Episode 15: Kesimpulan dan Langkah Selanjutnya</summary>
+        <div class="episode-content">
+          <img class="episode-thumbnail" src="https://via.placeholder.com/200x200?text=Thumbnail+15" alt="Episode 15 Thumbnail">
+          <div class="product-name">Nama Produk</div>
+          <div class="product-price">2</div>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/VIDEO_ID_15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p class="episode-description">Deskripsi singkat tentang Episode 15.</p>
+        </div>
+      </details>
+    </li>
+  </div>
+</ul>
+
+<button class="show-more-button" onclick="showMoreEpisodes()">Lihat semua episode</button>
+
+<script>
+function showMoreEpisodes() {
+  var hiddenEpisodes = document.getElementById("hiddenEpisodes");
+  var button = document.querySelector(".show-more-button");
+  if (hiddenEpisodes.style.display === "none") {
+    hiddenEpisodes.style.display = "block";
+    button.textContent = "Sembunyikan episode";
+  } else {
+    hiddenEpisodes.style.display = "none";
+    button.textContent = "Lihat semua episode";
+  }
+}
+</script>
+
+</body>
+            </html>
