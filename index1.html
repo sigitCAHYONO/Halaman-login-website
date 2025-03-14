@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Bisnis Anda</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <style>
+        /* CSS (Combined and Updated) */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: white;
+            background-color: #121212;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            /* overflow: hidden;  Removed to allow scrolling */
+            position: relative; /* Required for the overlay to position correctly */
+        }
+
+        /* Add a container for the entire content */
+        #content-container {
+            position: relative; /* Important for z-index to work */
+            z-index: 2; /* Make sure content is above the overlay initially */
+            overflow-y: auto; /* Enable vertical scrolling for this container */
+            height: 100vh; /* Full viewport height */
+        }
+
+        body:not(.lihat-video) {
+            animation: colorCycle 5s linear infinite;
+        }
+
+        @keyframes colorCycle {
+            0% { color: red; }
+            16.66% { color: orange; }
+            33.33% { color: yellow; }
+            50% { color: lime; }
+            66.66% { color: cyan; }
+            83.33% { color: magenta; }
+            100% { color: red; }
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* z-index and position are now relative to the content container */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0.5rem 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: transparent;
+            /* z-index and position are now relative to the content container */
+        }
+
+        main h2 {
+            font-size: 2.rem;
+            margin-bottom: 0.5rem;
+        }
+
+        main p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: space-between; /* Space items evenly */
+            padding: 10px;
+        }
+
+        .product {
+            flex: 0 0 calc(25% - 20px); /* 4 items per row */
+            margin: 10px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: transparent;
+            transition: transform 0.3s;
+            text-align: center;
+            border: 3px solid transparent;
+            position: relative;
+            cursor: not-allowed; /* Tambahkan cursor not-allowed */
+            opacity: 0.7; /* Tambahkan sedikit opasitas untuk indikasi tidak aktif */
+        }
+        /* Keep responsiveness */
+        @media (max-width: 1024px) { /* Adjust for tablets, etc. */
+            .product {
+                flex: 0 0 calc(33.333% - 20px); /* 3 per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                flex: 0 0 calc(50% - 20px); /* 2 per row */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                flex: 0 0 calc(100% - 20px); /* 1 per row */
+            }
+        }
+
+
+        .product:hover {
+            transform: scale(1); /* Hilangkan efek hover */
+        }
+
+        .product::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            bottom: -3px;
+            left: -3px;
+            border-radius: inherit;
+            background: none;
+            z-index: -1;
+            border: 3px solid transparent;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            animation: none; /* Hilangkan animasi judul produk */
+            display: inline-block;
+        }
+
+        @keyframes moveUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Behind everything */
+            box-shadow: inset 0px 0px 50px 10px rgba(0, 0, 0, 0.7);
+            display: none; /* Initially hidden */
+        }
+        /* Style to make the video visible when playing */
+        #background-video.playing {
+            display: block;
+        }
+
+        .lihat-video {
+            font-size: 1em;
+            color: #ff0000;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+            pointer-events: none; /* Nonaktifkan klik pada link lihat video */
+            opacity: 0.7;
+        }
+
+        .contact-button, .tiktok-button, .group-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color: 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .contact-button:hover, .tiktok-button:hover, .group-button:hover {
+            background-color: #000;
+        }
+
+        /* Style untuk widget di tengah */
+        .welcome-widget {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 30px 50px; /* Padding awal */
+            border-radius: 10px;
+            z-index: 1001; /* Higher than the overlay initially */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: auto; /* Biarkan lebar menyesuaikan konten */
+            min-width: 300px; /* Lebar minimum widget */
+        }
+
+        .welcome-widget img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .welcome-widget-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem; /* Ukuran font awal */
+            cursor: pointer;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .welcome-widget p {
+            font-size: 1.2rem; /* Ukuran font awal */
+        }
+
+        /* Style untuk overlay */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Warna latar belakang overlay (bisa disesuaikan) */
+            z-index: 1; /* Pastikan di atas konten utama tetapi di bawah widget selamat datang awalnya */
+        }
+
+        /* Media query untuk layar desktop */
+        @media (min-width: 1024px) {
+            .welcome-widget {
+                /* Kembalikan ke posisi tengah */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: auto; /* Biarkan lebar menyesuaikan konten */
+                padding-top: 60px; /* Padding atas lebih besar */
+                padding-bottom: 60px; /* Padding bawah lebih besar */
+                border-radius: 10px; /* Kembalikan sudut bulat */
+                box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.8); /* Perbesar shadow */
+                min-width: 500px; /* Lebar minimum lebih besar */
+            }
+
+            .welcome-widget img {
+                width: 150px; /* Ukuran gambar lebih besar */
+                height: 150px;
+            }
+
+            .welcome-widget-button {
+                font-size: 3rem; /* Ukuran font tombol lebih besar */
+            }
+
+            .welcome-widget p {
+                font-size: 1.6rem; /* Ukuran font paragraf lebih besar */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="content-container">
+        <video id="background-video" loop muted playsinline>
+            <source src="https://files.catbox.moe/czpy1t.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <header>
+            <h1><span style="font-style: italic;">MY ANIME COLLECTION</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="https://chat.whatsapp.com/DawtGw3euQB1nY6qf6ne35" class="group-button"><span style="font-style: italic;">MY GROUB</span></a></li>
+                    <li><a href="https://www.tiktok.com/@whatsappbotxy?_t=8iB7YQVKto0&amp;_r=1" class="tiktok-button"><span style="font-style: italic;">MY TIKTOK</span></a></li>
+                    <li><a href="https://wa.me/6285962300075" class="contact-button"><span style="font-style: italic;">MY kontak</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2><span style="font-style: italic;">1ANIMEKU</span></h2>
+                <p>
+                    <span style="font-style: italic;">APA YG SEDANG ANDA CARI ADA DI SINIH</span>
+                </p>
+            </section>
+
+            <section>
+                <h2>Produk Kami</h2>
+                <div class="product-container">
+                    <div class="product">
+                        <h3>𝙆𝙐𝙍𝙐𝙈𝙄 𝙑𝙀𝙍𝙎𝙄𝙊𝙉</h3>
+                        <img src="https://files.catbox.moe/st2vui.jpg" alt="Produk 1" />
+                        <a href="https://files.catbox.moe/ntrp8f.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                    </div>
+
+                    <div class="product">
+                        <h3>𝘾𝙊𝙎𝙋𝙇𝘼𝙔 𝙍𝘼𝙄𝘿𝙀𝙉𝙎</h3>
+                        <img src="https://files.catbox.moe/cjjo29.jpg" alt="Produk 2" />
+                        <a href="https://files.catbox.moe/a4vrke.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                    </div>
+
+                    <div class="product">
+                        <h3>𝙄𝙈 𝙁𝙐𝙍𝙄𝙉𝘼</h3>
+                        <img src="https://files.catbox.moe/jq35rq.jpg" alt="Produk 3" />
+                        <a href="https://files.catbox.moe/4wh7n8.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                    </div>
+
+                    <div class="product">
+                    <h3>𝗘𝗟𝗔𝗜𝗡𝗔 𝗬𝗔𝗡𝗗𝗘𝗥𝗘</h3>
+                    <img src="https://files.catbox.moe/3ccnvi.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/6abhif.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗖𝗛𝗜𝗡𝗘𝗦𝗘𝗚𝗜𝗥𝗟</h3>
+                    <img src="https://files.catbox.moe/1u2y0p.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/s93h1w.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝙀𝙇𝘼𝙄𝙉𝘼 𝙓 𝙃𝙐𝙏𝘼𝙊</h3>
+                    <img src="https://files.catbox.moe/3un1kk.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/yogcto.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗞𝗘𝗦𝗨𝗞𝗔𝗔𝗡 𝗠𝗜𝗠𝗜𝗡</h3>
+                    <img src="https://files.catbox.moe/8r18ok.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/lrs7ri.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗡𝗘𝗥𝗔𝗞𝗔𝗕𝗟𝗔𝗗𝗘𝗣𝗢𝗜𝗡𝗧</h3>
+                    <img src="https://files.catbox.moe/03hhhz.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/qme51h.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗟𝗜𝗔𝗧 𝗦𝗘𝗡𝗗𝗜𝗥𝗜</h3>
+                    <img src="https://files.catbox.moe/4k2ui7.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/lrk3bz.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗲𝘀𝗱𝗲𝗮𝘁𝗵 𝘁𝗮𝘁𝘀𝘂𝗺𝗶</h3>
+                    <img src="https://files.catbox.moe/aug2us.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/xhzxv3.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗦𝗵𝗼𝗹𝗮𝘄𝗮𝘁</h3>
+                    <img src="https://files.catbox.moe/684ows.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/figzc2.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗣𝗟𝗨𝗡𝗗𝗘𝗥𝗘𝗥</h3>
+                    <img src="https://files.catbox.moe/fkdwuy.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/rx71iu.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗞𝗬𝗢𝗦𝗨𝗠𝗜 𝗔𝗞𝗜𝗥𝗔</h3>
+                    <img src="https://files.catbox.moe/w8vux1.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/q4avj5.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗛𝗜𝗞𝗔𝗥𝗜 𝗫 𝗡𝗣𝗭𝗢𝗠𝗜</h3>
+                    <img src="https://files.catbox.moe/on17qg.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/2h9w0u.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗠𝗔𝗝𝗢 𝗡𝗢 𝗧𝗔𝗕𝗜</h3>
+                    <img src="https://files.catbox.moe/6yvaz7.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/opnmok.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                
+                <div class="product">
+                    <h3>𝗧𝗥𝗜𝗡𝗜𝗧𝗬 𝗦𝗘𝗩𝗘𝗡</h3>
+                    <img src="https://files.catbox.moe/cbk1us.jpg" alt="Produk 1" />
+                    <a href="https://files.catbox.moe/772o8y.mp4" target="_blank" class="lihat-video">𝗡𝗢𝗡𝗧𝗢𝗡 𝗦𝗘𝗞𝗔𝗥𝗔𝗡𝗚</a>
+                </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="welcome-widget" id="welcomeWidget">
+        <img src="https://files.catbox.moe/23cwx6.jpg" alt="Gambar Selamat Datang">
+        <button class="welcome-widget-button" id="welcomeButton">🥵𝐊𝐋𝐈𝐊 𝐋𝐀𝐍𝐉𝐔𝐓𝐊𝐀𝐍🥵</button>
+        <p>𝗧𝗲𝗿𝗶𝗺𝗮 𝗸𝗮𝘀𝗶𝗵 𝘁𝗲𝗹𝗮𝗵 𝗺𝗲𝗻𝗴𝘂𝗻𝗷𝘂𝗻𝗴𝗶 𝘄𝗲𝗯𝘀𝗶𝘁𝗲 𝗸𝗮𝗺𝗶. 𝗦𝗲𝗹𝗮𝗺𝗮𝘁 𝗺𝗲𝗻𝗶𝗸𝗺𝗮𝘁𝗶 𝗸𝗼𝗻𝘁𝗲𝗻 𝘆𝗮𝗻𝗴 𝗸𝗮𝗺𝗶 𝘀𝗮𝗷𝗶𝗸𝗮𝗻</p>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('background-video');
+        const products = document.querySelectorAll('.product');
+        const lihatVideoLinks = document.querySelectorAll('.lihat-video');
+        const welcomeWidget = document.getElementById('welcomeWidget');
+        const welcomeButton = document.getElementById('welcomeButton');
+        const overlay = document.getElementById('overlay');
+        let sound;
+        let isPlaying = false;
+        let productsClickable = false; // Flag untuk mengontrol apakah produk bisa diklik
+
+        function initAudio() {
+            if (!sound) {
+                sound = new Howl({
+                    src: ['https://files.catbox.moe/8jkq4b.mp3'],
+                    html5: true,
+                    loop: true,
+                    onload: function() {
+                        // No filter needed for basic synchronization
+                    },
+                    onloaderror: function(id, error) {
+                        console.error("Error loading audio:", id, error);
+                    },
+                    onplayerror: function(id, error) {
+                        console.error("Error playing audio:", id, error);
+                        if (Howler.ctx && Howler.ctx.state === 'suspended') {
+                            Howler.ctx.resume().catch(e => console.error("Error resuming AudioContext:", e));;
+                        }
+                    },
+                    onend: function() {
+                        isPlaying = false;
+                    }
+                });
+            }
+        }
+        function playVideoAndAudio() {
+            if (!isPlaying) {
+                video.classList.add('playing');
+
+                // Ensure both video and Howler use the HTML5 Audio API
+                if (sound) {
+                    // Crucial: Set the audio's current time to match the video's
+                    sound.seek(video.currentTime);
+                    sound.play();
+                }
+
+                video.play()
+                    .then(() => {
+                        isPlaying = true;
+                    })
+                    .catch(error => console.error("Error playing video:", error));
+            }
+        }
+
+
+        function pauseVideoAndAudio() {
+            video.classList.remove('playing');
+            if (sound) {
+                sound.pause();
+            }
+            video.pause();
+            isPlaying = false;
+        }
+
+        function setupProductClickListeners() {
+            products.forEach(product => {
+                product.style.cursor = 'pointer'; // Ubah cursor menjadi pointer
+                product.style.opacity = '1'; // Kembalikan opasitas normal
+                product.querySelector('.lihat-video').style.pointerEvents = 'auto'; // Aktifkan kembali klik pada link lihat video
+                product.querySelector('.lihat-video').style.opacity = '1'; // Kembalikan opasitas normal
+                product.style.animation = 'moveUpDown 2s ease-in-out infinite'; // Aktifkan kembali animasi judul produk
+                product.addEventListener('click', function() {
+                    initAudio();
+                    if (isPlaying) {
+                        pauseVideoAndAudio();
+                    } else {
+                        playVideoAndAudio();
+                    }
+                });
+            });
+            productsClickable = true;
+        }
+
+        products.forEach(product => {
+            product.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah tindakan default klik saat produk belum aktif
+                if (!productsClickable) {
+                    return; // Jangan lakukan apa pun jika produk belum bisa diklik
+                }
+                // Logika klik produk akan dijalankan di dalam fungsi setupProductClickListeners
+            });
+        });
+
+
+        lihatVideoLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (productsClickable) {
+                    window.open(this.href, '_blank');
+                }
+            });
+        });
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                pauseVideoAndAudio();
+            }
+        });
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('Menyalin teks tidak diizinkan.');
+        });
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        welcomeButton.addEventListener('click', function() {
+            playVideoAndAudio();
+            welcomeWidget.style.display = 'none';
+            overlay.style.display = 'none'; // Sembunyikan overlay saat tombol diklik
+            setupProductClickListeners(); // Aktifkan produk untuk bisa diklik
+        });
+    });
+    </script>
+</body>
+</html>
