@@ -1,872 +1,494 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #000; /* Latar belakang super hitam */
+    color: #fff; /* Teks berwarna putih */
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 15px;
+    max-width: 640px;
+    margin: 30px auto;
+    background-color: #111; /* Latar belakang container sedikit lebih terang dari body */
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12); /* Efek shadow putih */
 }
 
 header {
-    background-color: #00acc1;
+    background-color: #222; /* Header lebih terang dari container */
     color: #fff;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
-    border-bottom: 2px solid #b2dfdb;
+    border-bottom: 3px solid #333;
 }
 
 .user-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 0 15px;
 }
 
 .user-details h1 {
-    font-size: 1.5em;
+    font-size: 1.75em;
     margin: 0;
-    font-weight: bold;
+    font-weight: 700;
+    color: #fff;
 }
 
 .user-details p {
-    font-size: 0.9em;
-    color: #e0f7fa;
-    margin-top: 5px;
+    font-size: 1em;
+    color: #eee; /* Sedikit lebih terang dari putih */
+    margin-top: 8px;
 }
 
 .header-actions {
-    /* Link Group Informasi dihapus, jadi kita bisa menyembunyikan ini */
     display: none;
 }
 
 .saldo-info {
-    background-color: #00acc1; /* Warna latar belakang disesuaikan */
-    color: #fff; /* Warna teks disesuaikan */
-    padding: 15px;
+    background-color: #111; /* Latar belakang sama dengan container */
+    color: #fff;
+    padding: 20px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
-    font-size: 1.1em; /* Ukuran font sedikit lebih besar */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Efek shadow lebih halus */
+    font-size: 1.2em;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.08); /* Efek shadow putih */
+}
+
+.saldo-info div {
+    padding: 15px;
+    background-color: #333; /* Latar belakang lebih terang untuk saldo */
+    border-radius: 8px;
 }
 
 .saldo-info strong {
     display: block;
-    font-size: 1.8em; /* Ukuran font saldo lebih besar */
-    margin-top: 5px;
-    font-weight: bold;
+    font-size: 2.2em;
+    margin-top: 8px;
+    font-weight: 700;
+    color: #fff; /* Warna saldo tetap putih */
 }
 
 .quick-actions {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px; /* Margin bawah sedikit lebih besar */
-    padding: 0 15px; /* Tambahkan padding kiri dan kanan */
+    margin-bottom: 25px;
+    padding: 0 20px;
 }
 
 .quick-actions a {
     display: block;
-    background-color: #00acc1; /* Warna tombol disesuaikan */
-    color: #fff; /* Warna teks tombol disesuaikan */
-    padding: 12px 20px; /* Padding tombol lebih besar */
-    border-radius: 10px; /* Sudut tombol lebih bulat */
+    background-color: #333; /* Tombol berwarna sedikit lebih terang */
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
     text-decoration: none;
-    font-size: 1em; /* Ukuran font tombol disesuaikan */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Efek shadow tombol */
-    transition: background-color 0.3s ease;
-    text-align: center; /* Teks di tengah tombol */
+    font-size: 1.05em;
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    text-align: center;
 }
 
 .quick-actions a:hover {
-    background-color: #00897b; /* Efek hover yang lebih gelap */
+    background-color: #444; /* Efek hover lebih terang */
+    transform: scale(1.03);
 }
 
 .announcement {
-    background-color: #29b6f6; /* Warna latar belakang announcement disesuaikan */
-    color: #fff; /* Warna teks announcement disesuaikan */
-    padding: 12px; /* Padding announcement disesuaikan */
+    background-color: #444; /* Announcement lebih terang */
+    color: #eee;
+    padding: 15px;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
 }
 
 section {
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
 section h2 {
-    color: #333;
-    border-bottom: 3px solid #00acc1; /* Garis bawah judul bagian disesuaikan */
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-size: 1.4em; /* Ukuran font judul bagian disesuaikan */
-    font-weight: bold;
-    text-align: center; /* Judul bagian di tengah */
+    color: #fff;
+    border-bottom: 4px solid #555; /* Garis bawah lebih terang */
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    font-weight: 700;
+    text-align: center;
 }
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ukuran minimum item grid disesuaikan */
-    gap: 15px; /* Jarak antar item grid disesuaikan */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
 }
 
 .category-item {
-    background-color: #fff;
-    border-radius: 15px; /* Sudut item lebih bulat */
-    padding: 15px;
+    background-color: #333; /* Item grid lebih terang */
+    border-radius: 10px;
+    padding: 18px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.06);
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .category-item:hover {
-    transform: scale(1.03); /* Efek hover yang lebih halus */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Efek shadow saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
 }
 
 .category-item img {
-    max-width: 70px; /* Ukuran gambar disesuaikan */
-    height: 70px; /* Tinggi gambar disesuaikan */
-    margin-bottom: 10px;
-    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
-    object-fit: cover; /* Memastikan gambar pas di dalam lingkaran */
+    max-width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
 }
 
 .category-item span {
     display: block;
-    font-size: 0.9em; /* Ukuran font teks item disesuaikan */
-    color: #555;
+    font-size: 0.95em;
+    color: #fff;
+    margin-top: 8px;
 }
 
 /* Gaya khusus untuk tombol Dest dan Wallet */
 .category-item span:contains("Dest"),
 .category-item span:contains("Wallet") {
-    background-color: #a7f3d0; /* Warna hijau muda */
-    color: #166534; /* Warna hijau tua untuk teks */
-    border-radius: 8px;
-    padding: 5px 10px;
-    font-weight: bold;
-    display: inline-block; /* Agar padding bekerja dengan baik */
-    margin-top: 5px; /* Tambahkan sedikit margin atas */
+    background-color: #4CAF50; /* Warna hijau untuk penekanan */
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 8px;
 }
 
-/* Gaya untuk Halaman Nokos */
-#nokosPage {
+/* Gaya untuk Halaman Nokos, Premium Apps, Youtube Premium, Suntik Manual, View TT Only, Pembelian View TT, Panel Bot, Bantuan */
+#nokosPage, #premiumAppsPage, #youtubePremiumPage, #suntikManualPage, #viewTTOnlyPage, #buyViewTTPage, #panelBotPage, #bantuanPage {
     display: none;
 }
 
-#nokosPage header {
-    background-color: #00acc1;
+#nokosPage header, #premiumAppsPage header, #youtubePremiumPage header, #suntikManualPage header, #viewTTOnlyPage header, #buyViewTTPage header, #panelBotPage header, #bantuanPage header {
+    background-color: #222;
     color: #fff;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
+    border-bottom: 3px solid #333;
     box-sizing: border-box;
 }
 
-#nokosPage header a {
+#nokosPage header a, #premiumAppsPage header a, #youtubePremiumPage header a, #suntikManualPage header a, #viewTTOnlyPage header a, #buyViewTTPage header a, #panelBotPage header a, #bantuanPage header a {
     color: #fff;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 15px;
     opacity: 0.9;
     transition: opacity 0.3s ease;
+    font-size: 1em;
 }
 
-#nokosPage header a:hover {
+#nokosPage header a:hover, #premiumAppsPage header a:hover, #youtubePremiumPage header a:hover, #suntikManualPage header a:hover, #viewTTOnlyPage header a:hover, #buyViewTTPage header a:hover, #panelBotPage header a:hover, #bantuanPage header a:hover {
     opacity: 1;
 }
 
-#nokosPage header h1 {
-    font-size: 1.2em;
+#nokosPage header h1, #premiumAppsPage header h1, #youtubePremiumPage header h1, #suntikManualPage header h1, #viewTTOnlyPage header h1, #buyViewTTPage header h1, #panelBotPage header h1, #bantuanPage header h1 {
+    font-size: 1.5em;
     margin: 0;
+    font-weight: 700;
+}
+
+#nokosPage .navigation, #viewTTOnlyPage .navigation {
+    background-color: #333;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #444;
+}
+
+#nokosPage .navigation a, #viewTTOnlyPage .navigation a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+#nokosPage .navigation a.active, #viewTTOnlyPage .navigation a.active {
+    font-weight: bold;
+    background-color: #444;
+}
+
+#nokosPage .content, #premiumAppsPage .premium-grid, #youtubePremiumPage .content, #suntikManualPage .content, #viewTTOnlyPage .content, #buyViewTTPage .content, #panelBotPage .content, #bantuanPage .content {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#nokosPage .balance, #viewTTOnlyPage .balance {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+    font-size: 1em;
     font-weight: 600;
 }
 
-#nokosPage .navigation {
-    background-color: #f0f8ff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid #b2dfdb;
-}
-
-#nokosPage .navigation a {
-    color: #00acc1;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 0.9em;
-}
-
-#nokosPage .navigation a.active {
-    font-weight: bold;
-}
-
-#nokosPage .content {
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#nokosPage .balance {
-    background-color: #f0f8ff;
-    color: #00acc1;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    font-size: 0.9em;
-}
-
-#nokosPage .country-select,
-#nokosPage .operator-select,
-#nokosPage .service-info {
-    margin-bottom: 15px;
-}
-
-#nokosPage .country-select label,
-#nokosPage .operator-select label,
-#nokosPage .service-info label {
+#nokosPage .country-select label, #nokosPage .operator-select label, #nokosPage .service-info label,
+#youtubePremiumPage .email-input label,
+#buyViewTTPage .form-group label, #panelBotPage .form-group label {
     display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9em;
 }
 
-#nokosPage .country-select select,
-#nokosPage .operator-select select,
-#nokosPage .service-info input[type="text"] {
+#nokosPage .country-select select, #nokosPage .operator-select select, #nokosPage .service-info input[type="text"],
+#youtubePremiumPage .email-input input[type="email"],
+#buyViewTTPage .form-group input[type="text"], #buyViewTTPage .form-group input[type="number"],
+#panelBotPage .form-group input[type="text"], #panelBotPage .form-group input[type="number"] {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 6px;
     box-sizing: border-box;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: #fff; /* Warna teks input */
+    background-color: #444; /* Warna latar belakang input */
 }
 
 #nokosPage .info-text {
-    color: #777;
-    font-size: 0.7em;
-    margin-top: 3px;
+    color: #ccc;
+    font-size: 0.8em;
+    margin-top: 5px;
 }
 
 #nokosPage .product-details {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 10px;
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 15px;
+    border-radius: 8px;
     margin-bottom: 15px;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    color: #eee;
 }
 
 #nokosPage .product-details strong {
     display: block;
-    margin-bottom: 3px;
-    color: #00acc1;
+    margin-bottom: 5px;
+    color: #fff;
     font-weight: 600;
 }
 
 #nokosPage .product-details p {
-    margin: 3px 0;
-    color: #555;
-    font-size: 0.75em;
+    margin: 5px 0;
+    font-size: 0.85em;
 }
 
 #nokosPage .help-link {
     display: inline-block;
-    background-color: #00acc1;
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 20px;
     text-decoration: none;
     border-radius: 8px;
     transition: background-color 0.3s ease;
-    font-weight: 500;
-    font-size: 0.8em;
+    font-weight: 600;
+    font-size: 0.9em;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
 #nokosPage .help-link:hover {
-    background-color: #00897b;
-}
-
-.hidden-elements {
-    display: none;
-}
-
-/* Gaya untuk Halaman Premium Apps */
-#premiumAppsPage {
-    display: none;
-}
-
-#premiumAppsPage header {
-    background-color: #00acc1;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#premiumAppsPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#premiumAppsPage header a:hover {
-    opacity: 1;
-}
-
-#premiumAppsPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
+    background-color: #43A047;
 }
 
 #premiumAppsPage .premium-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-    padding: 15px;
-    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
 }
 
 #premiumAppsPage .app-item {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    font-size: 0.8em;
-}
-
-#premiumAppsPage .app-item:hover {
-    transform: scale(1.05);
+    background-color: #333;
+    border-radius: 8px;
+    padding: 12px;
 }
 
 #premiumAppsPage .app-item img {
-    max-width: 60px;
-    height: auto;
-    margin-bottom: 8px;
+    max-width: 70px;
+    margin-bottom: 10px;
+    border: 2px solid #444;
 }
 
 #premiumAppsPage .app-item span {
-    display: block;
-    color: #555;
-}
-
-/* Gaya untuk Halaman Youtube Premium */
-#youtubePremiumPage {
-    display: none;
-}
-
-#youtubePremiumPage header {
-    background-color: #00acc1;
+    font-size: 0.9em;
     color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#youtubePremiumPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#youtubePremiumPage header a:hover {
-    opacity: 1;
-}
-
-#youtubePremiumPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#youtubePremiumPage .content {
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#youtubePremiumPage .email-input {
-    margin-bottom: 15px;
-}
-
-#youtubePremiumPage .email-input label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
-}
-
-#youtubePremiumPage .email-input input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 0.8em;
 }
 
 #youtubePremiumPage .nominal-options h2 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin-top: 0;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #555;
+    padding-bottom: 8px;
+    color: #fff;
 }
 
 #youtubePremiumPage .nominal-options .option {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 0.8em;
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #eee;
 }
 
 #youtubePremiumPage .nominal-options .option p {
-    margin: 5px 0;
-    color: #555;
+    margin: 6px 0;
 }
 
 #youtubePremiumPage .nominal-options .option strong {
-    display: block;
-    color: #00acc1;
-    font-weight: 600;
-}
-
-/* Gaya untuk Halaman Suntik Manual */
-#suntikManualPage {
-    display: none;
-}
-
-#suntikManualPage header {
-    background-color: #00acc1;
+    font-size: 1em;
     color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#suntikManualPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#suntikManualPage header a:hover {
-    opacity: 1;
-}
-
-#suntikManualPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#suntikManualPage .content {
-    padding: 15px;
-    box-sizing: border-box;
 }
 
 #suntikManualPage .product-category {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 15px;
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
-    font-size: 0.9em;
+    font-size: 1em;
+    color: #eee;
 }
 
 #suntikManualPage .product-category h2 {
-    font-size: 1.1em;
+    font-size: 1.3em;
     margin-top: 0;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+    border-bottom: 2px solid #555;
+    padding-bottom: 6px;
+    color: #fff;
 }
 
 #suntikManualPage .product-category p {
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 0.8em;
+    color: #ddd;
+    margin-bottom: 12px;
+    font-size: 0.9em;
 }
 
 #suntikManualPage .button-suntik {
-    display: inline-block;
-    background-color: #00acc1;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
+    background-color: #4CAF50;
+    padding: 12px 20px;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    font-size: 0.8em;
-    cursor: pointer;
-}
-
-#suntikManualPage .button-suntik:hover {
-    background-color: #00897b;
-}
-
-/* Gaya untuk Halaman View TT Only */
-#viewTTOnlyPage {
-    display: none;
-}
-
-#viewTTOnlyPage header {
-    background-color: #00acc1;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#viewTTOnlyPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#viewTTOnlyPage header a:hover {
-    opacity: 1;
-}
-
-#viewTTOnlyPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#viewTTOnlyPage .content {
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#viewTTOnlyPage .balance {
-    background-color: #f0f8ff;
-    color: #00acc1;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     font-size: 0.9em;
+    color: #fff;
 }
 
 #viewTTOnlyPage .category-title {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 8px;
-    font-size: 1em;
-}
-
-#viewTTOnlyPage .product-list {
-    margin-bottom: 15px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #fff;
 }
 
 #viewTTOnlyPage .product-item {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 8px;
-    font-size: 0.8em;
-    cursor: pointer;
-    box-sizing: border-box;
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    color: #eee;
+}
+
+#viewTTOnlyPage .product-item:hover {
+    background-color: #555;
 }
 
 #viewTTOnlyPage .product-item strong {
-    display: block;
-    margin-bottom: 3px;
-    color: #00acc1;
-    font-weight: 600;
+    font-size: 1em;
+    color: #fff;
 }
 
 #viewTTOnlyPage .product-item p {
-    margin: 3px 0;
-    color: #555;
-    font-size: 0.75em;
-}
-
-/* Gaya untuk Halaman Pembelian View TT */
-#buyViewTTPage {
-    display: none;
-}
-
-#buyViewTTPage header {
-    background-color: #00acc1;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#buyViewTTPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#buyViewTTPage header a:hover {
-    opacity: 1;
-}
-
-#buyViewTTPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#buyViewTTPage .content {
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#buyViewTTPage .form-group {
-    margin-bottom: 12px;
-}
-
-#buyViewTTPage .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
-}
-
-#buyViewTTPage .form-group input[type="text"],
-#buyViewTTPage .form-group input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 0.8em;
-}
-
-#buyViewTTPage .form-group .description {
-    color: #777;
-    font-size: 0.7em;
-    margin-top: 3px;
+    margin: 5px 0;
+    font-size: 0.85em;
 }
 
 #buyViewTTPage .total-bayar {
-    background-color: #f0f8ff;
-    color: #00acc1;
-    padding: 12px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
     border-radius: 10px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
     font-weight: bold;
+    font-size: 1.05em;
+}
+
+#buyViewTTPage .button-beli, #panelBotPage .button-beli {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
     font-size: 0.9em;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
-#buyViewTTPage .button-beli {
-    display: inline-block;
-    background-color: #00acc1;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    font-size: 0.8em;
-    cursor: pointer;
-}
-
-#buyViewTTPage .button-beli:hover {
-    background-color: #00897b;
-}
-
-/* Gaya untuk Halaman Panel Bot */
-#panelBotPage {
-    display: none;
-}
-
-#panelBotPage header {
-    background-color: #00acc1;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#panelBotPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#panelBotPage header a:hover {
-    opacity: 1;
-}
-
-#panelBotPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#panelBotPage .content {
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-#panelBotPage .form-group {
-    margin-bottom: 12px;
-}
-
-#panelBotPage .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
-}
-
-#panelBotPage .form-group input[type="text"],
-#panelBotPage .form-group input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 0.8em;
-}
-
-#panelBotPage .button-beli {
-    display: inline-block;
-    background-color: #00acc1;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    font-size: 0.8em;
-    cursor: pointer;
-}
-
-#panelBotPage .button-beli:hover {
-    background-color: #00897b;
-}
-
-/* Gaya untuk Halaman Bantuan */
-#bantuanPage {
-    display: none;
-}
-
-#bantuanPage header {
-    background-color: #00acc1;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid #b2dfdb;
-    box-sizing: border-box;
-}
-
-#bantuanPage header a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#bantuanPage header a:hover {
-    opacity: 1;
-}
-
-#bantuanPage header h1 {
-    font-size: 1.2em;
-    margin: 0;
-    font-weight: 600;
-}
-
-#bantuanPage .content {
-    padding: 15px;
-    box-sizing: border-box;
+#buyViewTTPage .button-beli:hover, #panelBotPage .button-beli:hover {
+    background-color: #43A047;
 }
 
 #bantuanPage .bantuan-item {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 15px;
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 18px;
     border-radius: 10px;
-    margin-bottom: 10px;
-    font-size: 0.9em;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    color: #eee;
 }
 
 #bantuanPage .bantuan-item h3 {
-    color: #00acc1;
+    color: #fff;
     margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1em;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 #bantuanPage .bantuan-item p {
-    color: #555;
+    color: #ddd;
     margin-bottom: 0;
-    font-size: 0.8em;
 }
 
 #bantuanPage .bantuan-item a {
     display: block;
-    color: #00acc1;
+    color: #fff;
     text-decoration: none;
-    margin-top: 5px;
-    font-size: 0.8em;
+    margin-top: 8px;
 }
 
 #bantuanPage .bantuan-item .note {
-    color: #777;
-    font-size: 0.7em;
-    margin-top: 3px;
-}}
+    color: #ccc;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
