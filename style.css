@@ -10,13 +10,13 @@ body {
 }
 
 .container {
-    max-width: 720px; /* Lebar container sedikit disesuaikan */
+    max-width: 720px;
     margin: 40px auto;
-    background-color: #121212; /* Latar belakang container lebih gelap dan modern */
+    background-color: #121212;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 14px 35px rgba(255, 255, 255, 0.15);
-    border: 1px solid #222; /* Tambahkan border tipis untuk definisi */
+    box-shadow: 0 14px 35px rgba(255, 255, 255, 0.18);
+    border: 1px solid #222;
 }
 
 header {
@@ -36,7 +36,7 @@ header {
 }
 
 .user-details h1 {
-    font-size: 2.3em; /* Ukuran font lebih besar */
+    font-size: 2.3em;
     margin: 0;
     font-weight: 600;
     color: #eee;
@@ -67,15 +67,15 @@ header {
 }
 
 .saldo-info div {
-    padding: 25px;
+    padding: 15px;
     background-color: #333;
     border-radius: 10px;
 }
 
-.saldo-info strong {
+.saldo-info strong#realTimeClock {
     display: block;
-    font-size: 2.8em;
-    margin-top: 15px;
+    font-size: 1.8em;
+    margin-top: 8px;
     font-weight: 600;
     color: #fff;
     text-shadow: 1px 1px 3px #000;
@@ -139,7 +139,7 @@ section h2 {
 }
 
 .category-item {
-    background-color: #1e1e1e; /* Warna item lebih gelap */
+    background-color: #1e1e1e;
     border-radius: 12px;
     padding: 25px;
     text-align: center;
@@ -314,7 +314,7 @@ section h2 {
 
 #nokosPage .help-link, #buyViewTTPage .button-beli, #panelBotPage .button-beli, #suntikManualPage .button-suntik, #beliNokosSekarang {
     display: inline-block;
-    background-color: #5CB85C; /* Warna hijau lebih segar */
+    background-color: #5CB85C;
     color: white;
     padding: 18px 32px;
     text-decoration: none;
@@ -324,7 +324,7 @@ section h2 {
     font-size: 1.1em;
     cursor: pointer;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
-    margin-top: 15px; /* Tambahkan margin atas untuk tombol */
+    margin-top: 15px;
 }
 
 #nokosPage .help-link:hover, #buyViewTTPage .button-beli:hover, #panelBotPage .button-beli:hover, #suntikManualPage .button-suntik:hover, #beliNokosSekarang:hover {
