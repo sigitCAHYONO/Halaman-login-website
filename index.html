@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabungan Halaman Web</title>
+    <title>Ravaelstore</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="quick-actions">
                     <a href="#" class="quick-action">Isi Saldo</a>
-                    <a href="#" class="quick-action">Bantuan</a>
+                    <a href="#" id="bantuanButton" class="quick-action">Bantuan</a>
                     <a href="#" class="quick-action">Rootem</a>
                 </div>
             </header>
@@ -117,7 +117,7 @@
                         <img src="https://files.catbox.moe/jojygz.jpg" alt="Ban & UnBan Wa">
                         <span>Ban & UnBan Wa</span>
                     </div>
-                    <div class="category-item">
+                    <div class="category-item" id="panelBotButton">
                         <img src="https://files.catbox.moe/jnoxcu.png" alt="Panel Bot">
                         <span>Panel Bot</span>
                     </div>
@@ -154,9 +154,37 @@
                 </div>
             </section>
         </div>
-    </div>
 
-    <div class="container">
+        <div id="bantuanPage" style="display: none;">
+            <header>
+                <a href="#" id="backToMainFromBantuan">← Kembali</a>
+                <h1>Bantuan</h1>
+            </header>
+            <div class="content">
+                <div class="bantuan-item">
+                    <h3>Official Channel WhatsApp</h3>
+                    <p>Dapatkan Informasi Update Seputar Aplikasi</p>
+                    <a href="#">[Tautan Channel WhatsApp]</a>
+                </div>
+                <div class="bantuan-item">
+                    <h3>Channel WhatsApp</h3>
+                    <p>Jika Grup WhatsApp Penuh Bisa Masuk Disini</p>
+                    <a href="#">[Tautan Grup WhatsApp]</a>
+                    <p class="note">Jika grup penuh, coba channel Telegram.</p>
+                </div>
+                <div class="bantuan-item">
+                    <h3>Channel Telegram</h3>
+                    <p>Jika Kamu Pengguna Telegram Bisa Masuk Juga Channel Resmi Kami</p>
+                    <a href="#">[Tautan Channel Telegram]</a>
+                </div>
+                <div class="bantuan-item">
+                    <h3>Customer Service</h3>
+                    <p>Terjadi Kendala? Bisa Hubungi CS Kami</p>
+                    <a href="#">[Tautan atau Informasi Kontak CS]</a>
+                </div>
+            </div>
+        </div>
+
         <div id="nokosPage" class="nokos-page">
             <header>
                 <a href="#" id="backToMain">← Kembali</a>
@@ -191,8 +219,8 @@
                         <option value="usa">USA</option>
                         <option value="vietnam">Vietnam</option>
                         <option value="romania">Romania</option>
-                        <option value="poland">Polandia</option>
-                        <option value="canada">Kanada</option>
+                        <option value="poland">Poland</option>
+                        <option value="canada">Canada</option>
                         <option value="india">India</option>
                     </select>
                     <p class="info-text">Silahkan Pilih Negara Dahulu</p>
@@ -352,7 +380,7 @@
                     <p>Layanan untuk menambahkan followers TikTok secara manual.</p>
                     <a href="#" class="button-suntik">Pilih Layanan</a>
                 </div>
-            </div>
+                </div>
         </div>
 
         <div id="viewTTOnlyPage">
@@ -390,7 +418,7 @@
                         <p><strong>Rp 22 per 1.000 View + 4p</strong></p>
                     </div>
                     <div class="product-item" data-product-name="Tik Tok Views | Max Unlimited - FASTEST" data-price-per-100="32">
-                        <strong>Tik Tok Views | Max Unlimited - FASTEST</strong>
+                        <strong>TikTok Views | Max Unlimited - FASTEST</strong>
                         <p>Minimal Pemesanan: 100</p>
                         <p>Maximal Pemesanan: 2.147.483.647</p>
                         <p><strong>Rp 32 per 1.000 View + 4p</strong></p>
@@ -469,4 +497,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                </html>
