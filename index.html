@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Web Anda</title>
+    <title>Gabungan Halaman Web</title>
     <style>
         body {
-            font-family: 'Nunito', sans-serif; /* Font yang lebih segar dan modern */
+            font-family: 'Nunito', sans-serif;
             margin: 0;
-            background-color: #f4f7f6; /* Latar belakang yang sangat lembut */
+            background-color: #f4f7f6;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url('https://files.catbox.moe/qeqpkc.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .container {
             background-color: #fff;
-            border-radius: 15px; /* Sudut lebih bulat dan modern */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bayangan lebih dalam dan lembut */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 480px; /* Sedikit lebih lebar untuk tata letak yang lebih lega */
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         /* Gaya untuk Halaman Utama yang Baru */
         .main-page header {
-            background-color: #00acc1; /* Warna header yang lebih cerah dan modern */
+            background-color: #00acc1;
             color: #fff;
-            padding: 25px;
+            padding: 20px;
             border-bottom: 1px solid #e0e0e0;
-            position: relative; /* Untuk potensi elemen overlay */
+            position: relative;
+            box-sizing: border-box;
         }
 
         .main-page .user-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .main-page .user-details {
@@ -44,31 +54,32 @@
         }
 
         .main-page .user-details h1 {
-            font-size: 1.6em;
+            font-size: 1.4em;
             margin: 0;
-            font-weight: 700; /* Lebih tebal dan menonjol */
-            color: #fff; /* Teks putih */
+            font-weight: 700;
+            color: #fff;
         }
 
         .main-page .user-details p {
-            font-size: 0.95em;
+            font-size: 0.9em;
             margin: 5px 0 0;
-            color: #e0f7fa; /* Warna teks yang lebih terang */
+            color: #e0f7fa;
         }
 
         .main-page .header-actions {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .main-page .header-actions a {
             color: #fff;
             text-decoration: none;
-            font-size: 0.9em;
-            padding: 10px 15px;
+            font-size: 0.85em;
+            padding: 8px 12px;
             border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.15); /* Latar belakang sedikit lebih gelap */
+            background-color: rgba(0, 0, 0, 0.15);
             transition: background-color 0.3s ease;
+            white-space: nowrap;
         }
 
         .main-page .header-actions a:hover {
@@ -76,15 +87,16 @@
         }
 
         .main-page .saldo-info {
-            background-color: #26a69a; /* Warna saldo info yang lebih segar */
+            background-color: #26a69a;
             color: #fff;
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
-            margin: 20px;
+            margin: 15px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Bayangan lebih halus */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
         }
 
         .main-page .saldo-info div {
@@ -92,48 +104,50 @@
         }
 
         .main-page .saldo-info strong {
-            font-size: 1.5em; /* Ukuran font saldo lebih besar */
+            font-size: 1.3em;
             font-weight: 700;
-            letter-spacing: 0.5px; /* Sedikit spasi antar huruf */
+            letter-spacing: 0.5px;
         }
 
         .main-page .quick-actions {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 25px;
-            padding: 0 25px;
+            margin-bottom: 20px;
+            padding: 0 15px;
         }
 
         .main-page .quick-action {
             color: #00acc1;
             text-decoration: none;
-            padding: 14px 20px;
+            padding: 10px 15px;
             border-radius: 10px;
             background-color: #e0f2f1;
-            font-size: 0.95em;
+            font-size: 0.9em;
             border: 1px solid #b2dfdb;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Efek transisi */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
         }
 
         .main-page .quick-action:hover {
             background-color: #b2dfdb;
-            transform: scale(1.03); /* Efek sedikit membesar saat hover */
+            transform: scale(1.03);
         }
 
         .main-page .announcement {
-            background-color: #fff8e1; /* Warna pengumuman yang sangat lembut */
+            background-color: #fff8e1;
             color: #6d4c41;
-            padding: 18px;
+            padding: 15px;
             text-align: left;
-            margin: 0 20px 20px;
-            font-size: 0.9em;
+            margin: 0 15px 15px;
+            font-size: 0.85em;
             border-radius: 10px;
             overflow: hidden;
             white-space: nowrap;
             position: relative;
-            animation: scrollText 18s linear infinite; /* Durasi sedikit lebih lama */
+            animation: scrollText 18s linear infinite;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #ffe0b2; /* Tambahkan border tipis */
+            border: 1px solid #ffe0b2;
+            box-sizing: border-box;
         }
 
         @keyframes scrollText {
@@ -146,25 +160,26 @@
         }
 
         .main-page section {
-            padding: 25px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .main-page section h2 {
             color: #00acc1;
             margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-size: 1.3em;
             font-weight: 600;
             border-bottom: 2px solid #b2dfdb;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             letter-spacing: 0.3px;
         }
 
         .main-page .category-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Kurangi gap antar item */
-            margin-bottom: 20px; /* Kurangi margin bawah section */
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .main-page .category-item {
@@ -174,31 +189,32 @@
             justify-content: center;
             background-color: #fff;
             border-radius: 12px;
-            padding: 10px; /* Kurangi padding */
+            padding: 8px;
             text-align: center;
             border: 1px solid #e0e0e0;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            height: 120px; /* Kurangi tinggi tetap */
-            width: 100%; /* Lebar menyesuaikan grid */
+            height: auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .main-page .category-item:hover {
-            transform: scale(1.08);
+            transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         .main-page .category-item img {
-            width: 50px; /* Perkecil ukuran ikon */
-            height: 50px;
-            margin-bottom: 5px; /* Kurangi margin bawah ikon */
+            width: 40px;
+            height: 40px;
+            margin-bottom: 3px;
             object-fit: contain;
             opacity: 0.9;
         }
 
         .main-page .category-item span {
-            font-size: 0.85em; /* Perkecil ukuran font teks */
+            font-size: 0.8em;
             color: #444;
             white-space: nowrap;
             overflow: hidden;
@@ -214,17 +230,18 @@
         .nokos-page header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         .nokos-page header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -234,7 +251,7 @@
         }
 
         .nokos-page header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
@@ -243,16 +260,18 @@
             background-color: #e0f7fa;
             display: flex;
             justify-content: space-around;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #b2dfdb;
+            font-size: 0.9em;
         }
 
         .nokos-page .nav-item {
             color: #00acc1;
             text-decoration: none;
-            padding: 10px 15px;
+            padding: 8px 12px;
             font-weight: 500;
             transition: color 0.3s ease;
+            white-space: nowrap;
         }
 
         .nokos-page .nav-item:hover {
@@ -265,62 +284,37 @@
         }
 
         .nokos-page .content {
-            padding: 20px; /* Kurangi padding */
+            padding: 15px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .nokos-page .balance {
             background-color: #f0f8ff;
             color: #00acc1;
-            padding: 15px; /* Kurangi padding */
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 15px; /* Kurangi margin bawah */
+            margin-bottom: 12px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 0.9em;
         }
 
         .nokos-page .country-select {
-            margin-bottom: 10px; /* Kurangi margin bawah */
+            margin-bottom: 8px;
             text-align: left;
         }
 
         .nokos-page .country-select label {
             display: block;
-            margin-bottom: 5px; /* Kurangi margin bawah */
+            margin-bottom: 3px;
             color: #333;
             font-weight: 500;
-            font-size: 0.9em; /* Perkecil ukuran font label */
+            font-size: 0.8em;
         }
 
         .nokos-page .country-select select {
             width: 100%;
-            padding: 10px; /* Kurangi padding */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            appearance: none; /* Remove default arrow */
-            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
-            background-repeat: no-repeat;
-            background-position-x: 95%;
-            background-position-y: center;
-            background-color: #fff;
-            font-size: 0.9em; /* Perkecil ukuran font select */
-        }
-
-        .nokos-page .operator-select, .nokos-page .service-info {
-            margin-bottom: 10px; /* Kurangi margin bawah */
-            text-align: left;
-        }
-
-        .nokos-page .operator-select label {
-            display: block;
-            margin-bottom: 5px; /* Kurangi margin bawah */
-            color: #333;
-            font-weight: 500;
-            font-size: 0.9em; /* Perkecil ukuran font label */
-        }
-
-        .nokos-page .operator-select select {
-            width: 100%;
-            padding: 10px; /* Kurangi padding */
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 8px;
             appearance: none;
@@ -329,51 +323,122 @@
             background-position-x: 95%;
             background-position-y: center;
             background-color: #fff;
-            font-size: 0.9em; /* Perkecil ukuran font select */
+            font-size: 0.8em;
+            box-sizing: border-box;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            border-color: #b2dfdb;
+            color: #333;
+        }
+
+        .nokos-page .country-select select:focus {
+            border-color: #00acc1;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 172, 193, 0.5);
+        }
+
+        .nokos-page .country-select select option {
+            font-size: 0.8em;
+            color: #333;
+            background-color: #fff;
+            padding: 8px;
+        }
+
+        .nokos-page .country-select select option:hover {
+            background-color: #e0f7fa;
+        }
+
+        .nokos-page .operator-select, .nokos-page .service-info {
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .nokos-page .operator-select label {
+            display: block;
+            margin-bottom: 3px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.8em;
+        }
+
+        .nokos-page .operator-select select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center;
+            background-color: #fff;
+            font-size: 0.8em;
+            box-sizing: border-box;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            border-color: #b2dfdb;
+            color: #333;
+        }
+
+        .nokos-page .operator-select select:focus {
+            border-color: #00acc1;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 172, 193, 0.5);
+        }
+
+        .nokos-page .operator-select select option {
+            font-size: 0.8em;
+            color: #333;
+            background-color: #fff;
+            padding: 8px;
+        }
+
+        .nokos-page .operator-select select option:hover {
+            background-color: #e0f7fa;
         }
 
         .nokos-page .service-info label {
             display: block;
-            margin-bottom: 5px; /* Kurangi margin bawah */
+            margin-bottom: 3px;
             color: #333;
             font-weight: 500;
-            font-size: 0.9em; /* Perkecil ukuran font label */
+            font-size: 0.8em;
         }
 
         .nokos-page .service-info input[type="text"] {
             width: 100%;
-            padding: 10px; /* Kurangi padding */
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-sizing: border-box;
             background-color: #f9f9f9;
-            font-size: 0.9em; /* Perkecil ukuran font input */
+            font-size: 0.8em;
         }
 
         .nokos-page .info-text {
             color: #777;
-            font-size: 0.8em; /* Perkecil ukuran font info text */
-            margin-bottom: 10px; /* Kurangi margin bawah */
+            font-size: 0.7em;
+            margin-bottom: 8px;
             text-align: left;
         }
 
         .nokos-page .product-details {
             background-color: #f9f9f9;
             border: 1px solid #eee;
-            padding: 15px; /* Kurangi padding */
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 15px; /* Kurangi margin bawah */
+            margin-bottom: 12px;
             text-align: left;
-            font-size: 0.9em; /* Perkecil ukuran font product details */
+            font-size: 0.8em;
         }
 
         .nokos-page .help-link {
             color: #00acc1;
             text-decoration: none;
             display: block;
-            margin-top: 15px; /* Kurangi margin atas */
+            margin-top: 12px;
             font-weight: 500;
-            font-size: 0.9em; /* Perkecil ukuran font help link */
+            font-size: 0.8em;
         }
 
         .nokos-page .hidden-elements {
@@ -388,17 +453,18 @@
         #premiumAppsPage header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         #premiumAppsPage header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -408,16 +474,16 @@
         }
 
         #premiumAppsPage header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
 
         #premiumAppsPage .premium-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 kolom */
-            gap: 15px; /* Kurangi gap antar item */
-            padding: 20px; /* Kurangi padding */
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 8px;
+            padding: 15px;
         }
 
         #premiumAppsPage .app-item {
@@ -427,30 +493,31 @@
             justify-content: center;
             background-color: #fff;
             border-radius: 12px;
-            padding: 10px; /* Kurangi padding */
+            padding: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
             text-align: center;
-            cursor: pointer; /* Menambahkan cursor pointer */
+            cursor: pointer;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            height: 120px; /* Kurangi tinggi tetap */
-            width: 100%; /* Lebar menyesuaikan grid */
+            height: auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         #premiumAppsPage .app-item:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         #premiumAppsPage .app-item img {
-            width: 60px; /* Perkecil ukuran ikon */
-            height: 60px;
-            margin-bottom: 5px; /* Kurangi margin bawah */
-            object-fit: contain; /* Agar gambar tidak terdistorsi */
+            width: 40px;
+            height: 40px;
+            margin-bottom: 3px;
+            object-fit: contain;
             opacity: 0.8;
         }
 
         #premiumAppsPage .app-item span {
-            font-size: 0.85em; /* Perkecil ukuran font teks */
+            font-size: 0.75em;
             color: #333;
             font-weight: 500;
             white-space: nowrap;
@@ -466,17 +533,18 @@
         #youtubePremiumPage header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         #youtubePremiumPage header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -486,57 +554,59 @@
         }
 
         #youtubePremiumPage header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
 
         #youtubePremiumPage .content {
-            padding: 20px; /* Kurangi padding */
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         #youtubePremiumPage .email-input {
-            margin-bottom: 20px; /* Kurangi margin bawah */
+            margin-bottom: 15px;
         }
 
         #youtubePremiumPage .email-input label {
             display: block;
-            margin-bottom: 8px; /* Kurangi margin bawah */
+            margin-bottom: 5px;
             color: #333;
             font-weight: 500;
-            font-size: 0.9em; /* Perkecil ukuran font label */
+            font-size: 0.8em;
         }
 
         #youtubePremiumPage .email-input input[type="email"] {
             width: 100%;
-            padding: 10px; /* Kurangi padding */
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-sizing: border-box;
-            font-size: 0.9em; /* Perkecil ukuran font input */
+            font-size: 0.8em;
         }
 
         #youtubePremiumPage .nominal-options h2 {
             color: #00acc1;
             margin-top: 0;
-            margin-bottom: 12px; /* Kurangi margin bawah */
-            font-size: 1.1em; /* Perkecil ukuran font heading */
+            margin-bottom: 10px;
+            font-size: 1em;
             font-weight: 600;
         }
 
         #youtubePremiumPage .nominal-options .option {
             background-color: #f9f9f9;
             border: 1px solid #eee;
-            padding: 15px; /* Kurangi padding */
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 12px; /* Kurangi margin bawah */
-            font-size: 0.9em; /* Perkecil ukuran font option */
+            margin-bottom: 10px;
+            font-size: 0.8em;
+            box-sizing: border-box;
         }
 
         #youtubePremiumPage .nominal-options .option p {
-            margin: 5px 0; /* Kurangi margin */
+            margin: 3px 0;
             color: #555;
-            font-size: 0.85em; /* Perkecil ukuran font paragraf */
+            font-size: 0.75em;
         }
 
         #youtubePremiumPage .nominal-options .option strong {
@@ -548,17 +618,18 @@
         .suntik-manual-page header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         .suntik-manual-page header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -568,50 +639,52 @@
         }
 
         .suntik-manual-page header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
 
         .suntik-manual-page .content {
-            padding: 20px; /* Kurangi padding */
+            padding: 15px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .suntik-manual-page .product-category {
             background-color: #f9f9f9;
             border: 1px solid #eee;
-            padding: 15px; /* Kurangi padding */
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 20px; /* Kurangi margin bawah */
+            margin-bottom: 15px;
             text-align: left;
-            font-size: 0.9em; /* Perkecil ukuran font */
+            font-size: 0.8em;
+            box-sizing: border-box;
         }
 
         .suntik-manual-page .product-category h2 {
             color: #00acc1;
             margin-top: 0;
-            margin-bottom: 8px; /* Kurangi margin bawah */
+            margin-bottom: 5px;
             font-weight: 600;
-            font-size: 1.1em; /* Perkecil ukuran font heading */
+            font-size: 1em;
         }
 
         .suntik-manual-page .button-suntik {
             display: inline-block;
             background-color: #00acc1;
             color: white;
-            padding: 10px 15px; /* Kurangi padding */
+            padding: 8px 12px;
             text-decoration: none;
             border-radius: 8px;
-            margin-top: 10px; /* Kurangi margin atas */
+            margin-top: 8px;
             transition: background-color 0.3s ease, transform 0.3s ease;
             font-weight: 500;
-            font-size: 0.85em; /* Perkecil ukuran font tombol */
+            font-size: 0.75em;
         }
 
         .suntik-manual-page .button-suntik:hover {
             background-color: #00897b;
-            transform: translateY(-2px); /* Efek sedikit naik saat hover */
+            transform: translateY(-2px);
         }
 
         /* Gaya untuk Halaman View TT Only */
@@ -622,17 +695,18 @@
         #viewTTOnlyPage header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         #viewTTOnlyPage header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -642,54 +716,59 @@
         }
 
         #viewTTOnlyPage header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
 
         #viewTTOnlyPage .content {
-            padding: 20px;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         #viewTTOnlyPage .balance {
             background-color: #f0f8ff;
             color: #00acc1;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 0.9em;
         }
 
         #viewTTOnlyPage .category-title {
             color: #333;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1em;
         }
 
         #viewTTOnlyPage .product-list {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         #viewTTOnlyPage .product-item {
             background-color: #f9f9f9;
             border: 1px solid #eee;
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9em;
-            cursor: pointer; /* Tambahkan cursor pointer */
+            margin-bottom: 8px;
+            font-size: 0.8em;
+            cursor: pointer;
+            box-sizing: border-box;
         }
 
         #viewTTOnlyPage .product-item strong {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             color: #00acc1;
             font-weight: 600;
         }
 
         #viewTTOnlyPage .product-item p {
-            margin: 5px 0;
+            margin: 3px 0;
             color: #555;
+            font-size: 0.75em;
         }
 
         /* Gaya untuk Halaman Pembelian View TT */
@@ -700,17 +779,18 @@
         #buyViewTTPage header {
             background-color: #00acc1;
             color: #fff;
-            padding: 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             border-bottom: 1px solid #b2dfdb;
+            box-sizing: border-box;
         }
 
         #buyViewTTPage header a {
             color: #fff;
             text-decoration: none;
-            margin-right: 15px;
+            margin-right: 10px;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -720,51 +800,53 @@
         }
 
         #buyViewTTPage header h1 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin: 0;
             font-weight: 600;
         }
 
         #buyViewTTPage .content {
-            padding: 20px;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         #buyViewTTPage .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         #buyViewTTPage .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: #333;
             font-weight: 500;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         #buyViewTTPage .form-group input[type="text"],
         #buyViewTTPage .form-group input[type="number"] {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-sizing: border-box;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         #buyViewTTPage .form-group .description {
             color: #777;
-            font-size: 0.8em;
-            margin-top: 5px;
+            font-size: 0.7em;
+            margin-top: 3px;
         }
 
         #buyViewTTPage .total-bayar {
             background-color: #f0f8ff;
             color: #00acc1;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             font-weight: bold;
+            font-size: 0.9em;
         }
 
         #buyViewTTPage .button-beli {
@@ -776,7 +858,7 @@
             border-radius: 8px;
             transition: background-color 0.3s ease;
             font-weight: 500;
-            font-size: 0.9em;
+            font-size: 0.8em;
             cursor: pointer;
         }
 
@@ -791,12 +873,11 @@
             <header>
                 <div class="user-info">
                     <div class="user-details">
-                        <h1>Hal, Sigit</h1>
-                        <p>055891267541</p>
+                        <h1>Halo Sobat Ravaelstore</h1>
+                        <p></p>
                     </div>
                     <div class="header-actions">
                         <a href="#">Group Informasi</a>
-                        <a href="#">Refresh Saldo</a>
                     </div>
                 </div>
                 <div class="saldo-info">
@@ -809,7 +890,6 @@
                     <a href="#" class="quick-action">Isi Saldo</a>
                     <a href="#" class="quick-action">Bantuan</a>
                     <a href="#" class="quick-action">Rootem</a>
-                    <a href="#" class="quick-action">Mutasi Saldo</a>
                 </div>
             </header>
 
@@ -935,7 +1015,9 @@
                 </div>
             </section>
         </div>
+    </div>
 
+    <div class="container">
         <div id="nokosPage" class="nokos-page">
             <header>
                 <a href="#" id="backToMain">← Kembali</a>
@@ -957,14 +1039,17 @@
                     <label for="country">Negara</label>
                     <select id="country">
                         <option value="">-- Pilih Negara --</option>
-                        <option value="kazakhstan">Kazakhstan</option>
-                        <option value="china">China</option>
-                        <option value="usa">USA</option>
                         <option value="malaysia">Malaysia</option>
                         <option value="indonesia">Indonesia</option>
                         <option value="philippines">Philippines</option>
-                        </option>
                         <option value="myanmar">Myanmar</option>
+                        <option value="rusia">Rusia</option>
+                        <option value="thailand">Thailand</option>
+                        <option value="colombia">Colombia</option>
+                        <option value="brazil">Brazil</option>
+                        <option value="kazakhstan">Kazakhstan</option>
+                        <option value="china">China</option>
+                        <option value="usa">USA</option>
                         <option value="vietnam">Vietnam</option>
                         <option value="romania">Romania</option>
                         <option value="poland">Poland</option>
@@ -991,7 +1076,7 @@
                     <div class="product-details">
                         <strong>Whatsapp</strong>
                         <p>Tersedia 122 Nomor</p>
-                        <p><strong>Rp 29.600</strong></p>
+                        <p id="nokosPrice">Harga akan muncul setelah memilih negara</p>
                     </div>
                 </div>
 
@@ -1227,7 +1312,7 @@
         const youtubeAppItem = document.getElementById('youtubeAppItem');
         const youtubePremiumPage = document.getElementById('youtubePremiumPage');
         const backToPremAppsButton = document.getElementById('backToPremApps');
-        const allButtons = document.querySelectorAll('.main-page .category-item'); // Mengubah selector
+        const allButtons = document.querySelectorAll('.main-page .category-item');
         const suntikManualButtons = Array.from(document.querySelectorAll('.main-page .category-item span')).filter(span => span.textContent === 'Suntik Manual');
         const suntikManualPage = document.getElementById('suntikManualPage');
         const backToMainFromSuntikManualButton = document.getElementById('backToMainFromSuntikManual');
@@ -1243,17 +1328,27 @@
         const totalBayarDiv = document.querySelector('#buyViewTTPage .total-bayar');
         const deskripsiInput = document.getElementById('deskripsi');
         const beliSekarangViewTTButton = document.getElementById('beliSekarangViewTT');
+        const nokosPriceElement = document.getElementById('nokosPrice');
 
         let selectedProduct = null;
         let pricePer100Views = 0;
 
-        // Mengubah saldo
+        const nokosPrices = {
+            'malaysia': 'Rp 15.000',
+            'indonesia': 'Rp 8.000',
+            'philippines': 'Rp 10.000',
+            'myanmar': 'Kosong',
+            'rusia': 'Rp 20.000',
+            'thailand': 'Rp 15.000',
+            'colombia': 'Rp 17.000',
+            'brazil': 'Rp 30.000'
+        };
+
         const saldoStrong = saldoInfoDiv.querySelector('strong');
         if (saldoStrong) {
             saldoStrong.textContent = '271 Triliun';
         }
 
-        // Menghapus elemen Total Transaksi
         const saldoInfoChildren = Array.from(saldoInfoDiv.children);
         if (saldoInfoChildren.length > 1) {
             saldoInfoDiv.removeChild(saldoInfoChildren[1]);
@@ -1267,9 +1362,8 @@
             });
         });
 
-        // Menambahkan event listener untuk tombol Suntik Manual
         suntikManualButtons.forEach(buttonSpan => {
-            const buttonItem = buttonSpan.parentNode; // Mendapatkan elemen category-item parent
+            const buttonItem = buttonSpan.parentNode;
             buttonItem.addEventListener('click', () => {
                 mainPage.style.display = 'none';
                 suntikManualPage.style.display = 'block';
@@ -1289,31 +1383,38 @@
         backToMainButton.addEventListener('click', () => {
             nokosPage.style.display = 'none';
             mainPage.style.display = 'block';
-            // Reset tampilan nokos page saat kembali
             countrySelect.value = '';
             nokosDetails.style.display = 'none';
+            nokosPriceElement.textContent = 'Harga akan muncul setelah memilih negara';
         });
 
         countrySelect.addEventListener('change', () => {
             if (countrySelect.value) {
                 nokosDetails.style.display = 'block';
+                const selectedCountry = countrySelect.value;
+                if (nokosPrices.hasOwnProperty(selectedCountry)) {
+                    nokosPriceElement.textContent = nokosPrices[selectedCountry];
+                } else {
+                    nokosPriceElement.textContent = 'Harga tidak tersedia untuk negara ini';
+                }
             } else {
                 nokosDetails.style.display = 'none';
+                nokosPriceElement.textContent = 'Harga akan muncul setelah memilih negara';
             }
         });
 
         telegramLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Mencegah tautan langsung terbuka
+            event.preventDefault();
 
             const selectedCountry = countrySelect.value;
             let telegramMessage = "Mas, saya mau beli nokos ini negara ";
 
             if (selectedCountry) {
-                telegramMessage += selectedCountry.toLowerCase(); // Menggunakan nama negara yang dipilih
+                telegramMessage += selectedCountry.toLowerCase();
             }
 
             const telegramUrl = `https://t.me/RavaeIStore?text=${encodeURIComponent(telegramMessage)}`;
-            window.open(telegramUrl, '_blank'); // Membuka di tab baru
+            window.open(telegramUrl, '_blank');
         });
 
         premAppsButton.addEventListener('click', () => {
@@ -1336,7 +1437,6 @@
             premiumAppsPage.style.display = 'block';
         });
 
-        // Tambahkan event listener untuk tombol Vps
         const vpsButton = Array.from(document.querySelectorAll('.main-page .category-item span')).find(span => span.textContent === 'Vps');
         if (vpsButton) {
             const vpsButtonItem = vpsButton.parentNode;
@@ -1347,7 +1447,6 @@
             console.error('Tombol Vps tidak ditemukan.');
         }
 
-        // Tambahkan event listener untuk tombol View TT Only
         viewTTOnlyButton.addEventListener('click', () => {
             mainPage.style.display = 'none';
             viewTTOnlyPage.style.display = 'block';
@@ -1358,7 +1457,6 @@
             mainPage.style.display = 'block';
         });
 
-        // Event listener untuk setiap produk di halaman View TT Only
         productItemsViewTT.forEach(item => {
             item.addEventListener('click', () => {
                 selectedProduct = item.dataset.productName;
@@ -1366,10 +1464,9 @@
                 deskripsiInput.value = selectedProduct;
                 viewTTOnlyPage.style.display = 'none';
                 buyViewTTPage.style.display = 'block';
-                // Reset input jumlah dan total bayar saat membuka halaman pembelian
                 jumlahInput.value = 0;
                 totalBayarDiv.textContent = 'Total Bayar: Rp 0';
-                linkVideoInput.value = ''; // Kosongkan juga link video
+                linkVideoInput.value = '';
             });
         });
 
@@ -1378,25 +1475,25 @@
             viewTTOnlyPage.style.display = 'block';
         });
 
-        // Event listener untuk menghitung total bayar saat jumlah diubah
         jumlahInput.addEventListener('input', () => {
             const jumlah = parseInt(jumlahInput.value);
             if (!isNaN(jumlah)) {
-                const totalHargaPerak = Math.floor(jumlah / 100);
-                totalBayarDiv.textContent = `Total Bayar: Rp ${totalHargaPerak}`;
+                const totalHarga = jumlah * 0.5;
+                totalBayarDiv.textContent = `Total Bayar: ${totalHarga} p`;
             } else {
                 totalBayarDiv.textContent = 'Total Bayar: Rp 0';
             }
         });
 
-        // Event listener untuk tombol Beli Sekarang di halaman View TT Only
         beliSekarangViewTTButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Mencegah aksi default tombol (navigasi)
+            event.preventDefault();
 
             const linkVideo = linkVideoInput.value.trim();
             const jumlah = jumlahInput.value.trim();
-            const deskripsi = deskripsiInput.value.trim(); // Ambil nilai deskripsi
-            const totalHarga = totalBayarDiv.textContent.split(': ')[1]; // Mendapatkan nilai harga dari teks
+            const deskripsi = deskripsiInput.value.trim();
+            // Pastikan kita mengambil teks terbaru dari totalBayarDiv
+            const totalBayarText = totalBayarDiv.textContent;
+            const totalHarga = totalBayarText.includes(':') ? totalBayarText.split(': ')[1] : totalBayarText;
 
             if (!linkVideo) {
                 alert('Link Video TikTok harus diisi.');
@@ -1412,6 +1509,39 @@
             const telegramUrl = `https://t.me/RavaeIStore?text=${encodeURIComponent(telegramMessage)}`;
             window.open(telegramUrl, '_blank');
         });
+
+        // Perbarui teks dan hapus tombol di main page
+        const userInfoDiv = document.querySelector('.main-page .user-info .user-details');
+        if (userInfoDiv) {
+            const h1Element = userInfoDiv.querySelector('h1');
+            const pElement = userInfoDiv.querySelector('p');
+            if (h1Element) {
+                h1Element.textContent = 'Halo Sobat Ravaelstore';
+            }
+            if (pElement) {
+                pElement.textContent = ''; // Mengosongkan nomor
+            }
+        }
+
+        const headerActionsDiv = document.querySelector('.main-page .header-actions');
+        if (headerActionsDiv) {
+            const links = headerActionsDiv.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.textContent.trim() === 'Refresh Saldo' || link.textContent.trim() === 'Mutasi Saldo') {
+                    link.remove();
+                }
+            });
+        }
+
+        const quickActionsDiv = document.querySelector('.main-page .quick-actions');
+        if (quickActionsDiv) {
+            const links = quickActionsDiv.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.textContent.trim() === 'Mutasi Saldo') {
+                    link.remove();
+                }
+            });
+        }
     </script>
 </body>
 </html>
