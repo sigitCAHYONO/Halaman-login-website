@@ -247,10 +247,20 @@
                     </div>
                 </div>
 
-                <div>
-                    <p>Ingin membeli?</p>
-                    <a href="#" id="telegramLink" class="help-link">Klik Disini</a>
+                <div id="nokosQuantitySection" class="hidden-elements">
+                    <div class="form-group">
+                        <label for="nokosQuantity">Jumlah Nokos</label>
+                        <input type="number" id="nokosQuantity" value="1" min="1">
+                    </div>
+                    <div class="total-bayar">
+                        Total Harga: <span id="totalNokosPrice">Rp 10.000</span>
+                    </div>
+                    <div>
+                        <p>Ingin membeli?</p>
+                        <a href="#" id="beliNokosSekarang" class="help-link">Klik Disini</a>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -497,4 +507,4 @@
 
     <script src="script.js"></script>
 </body>
-                </html>
+</html>
