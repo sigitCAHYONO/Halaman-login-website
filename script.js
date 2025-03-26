@@ -56,9 +56,9 @@ const nokosButton = document.getElementById('nokosButton');
         };
 
         const saldoStrong = saldoInfoDiv.querySelector('strong');
-        if (saldoStrong) {
-            // saldoStrong.textContent = '271 Triliun'; // Dihapus karena diganti jam
-        }
+        // if (saldoStrong) {
+        //     saldoStrong.textContent = '271 Triliun';
+        // }
 
         const saldoInfoChildren = Array.from(saldoInfoDiv.children);
         if (saldoInfoChildren.length > 1) {
@@ -96,20 +96,24 @@ const nokosButton = document.getElementById('nokosButton');
             mainPage.style.display = 'block';
             countrySelect.value = '';
             nokosDetails.style.display = 'none';
+            nokosQuantitySection.style.display = 'none';
             nokosPriceElement.textContent = 'Harga akan muncul setelah memilih negara';
         });
 
         countrySelect.addEventListener('change', () => {
             if (countrySelect.value) {
                 nokosDetails.style.display = 'block';
+                nokosQuantitySection.style.display = 'block';
                 const selectedCountry = countrySelect.value;
                 if (nokosPrices.hasOwnProperty(selectedCountry)) {
                     nokosPriceElement.textContent = nokosPrices[selectedCountry];
                 } else {
                     nokosPriceElement.textContent = 'Harga tidak tersedia untuk negara ini';
                 }
+                updateTotalNokosPrice();
             } else {
                 nokosDetails.style.display = 'none';
+                nokosQuantitySection.style.display = 'none';
                 nokosPriceElement.textContent = 'Harga akan muncul setelah memilih negara';
             }
         });
