@@ -1,226 +1,169 @@
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-color: #f4f7f6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    background-image: url('https://files.catbox.moe/qeqpkc.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #f4f6f8;
+    color: #333;
 }
 
 .container {
+    max-width: 600px;
+    margin: 20px auto;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 90%;
-    max-width: 600px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Gaya untuk Halaman Utama yang Baru */
-.main-page header {
+header {
     background-color: #00acc1;
     color: #fff;
     padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    position: relative;
-    box-sizing: border-box;
+    text-align: center;
+    border-bottom: 2px solid #b2dfdb;
 }
 
-.main-page .user-info {
+.user-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.main-page .user-details {
-    flex-grow: 1;
-}
-
-.main-page .user-details h1 {
-    font-size: 1.4em;
+.user-details h1 {
+    font-size: 1.5em;
     margin: 0;
-    font-weight: 700;
-    color: #fff;
+    font-weight: bold;
 }
 
-.main-page .user-details p {
+.user-details p {
     font-size: 0.9em;
-    margin: 5px 0 0;
     color: #e0f7fa;
+    margin-top: 5px;
 }
 
-.main-page .header-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.main-page .header-actions a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.85em;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-}
-
-.main-page .header-actions a:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
-.main-page .saldo-info {
-    background-color: #26a69a;
-    color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    margin: 15px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
-}
-
-.main-page .saldo-info div {
-    text-align: center;
-}
-
-.main-page .saldo-info strong {
-    font-size: 1.3em;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.main-page .quick-actions {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    padding: 0 15px;
-}
-
-.main-page .quick-action {
-    color: #00acc1;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 10px;
-    background-color: #e0f2f1;
-    font-size: 0.9em;
-    border: 1px solid #b2dfdb;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    white-space: nowrap;
-}
-
-.main-page .quick-action:hover {
-    background-color: #b2dfdb;
-    transform: scale(1.03);
-}
-
-.main-page .announcement {
-    background-color: #fff8e1;
-    color: #6d4c41;
-    padding: 15px;
-    text-align: left;
-    margin: 0 15px 15px;
-    font-size: 0.85em;
-    border-radius: 10px;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    animation: scrollText 18s linear infinite;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    border: 1px solid #ffe0b2;
-    box-sizing: border-box;
-}
-
-@keyframes scrollText {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.main-page section {
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.main-page section h2 {
-    color: #00acc1;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-    font-weight: 600;
-    border-bottom: 2px solid #b2dfdb;
-    padding-bottom: 8px;
-    letter-spacing: 0.3px;
-}
-
-.main-page .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.main-page .category-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    height: auto;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.main-page .category-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.main-page .category-item img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 3px;
-    object-fit: contain;
-    opacity: 0.9;
-}
-
-.main-page .category-item span {
-    font-size: 0.8em;
-    color: #444;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 500;
-}
-
-/* Gaya untuk Halaman Nokos */
-.nokos-page {
+.header-actions {
+    /* Link Group Informasi dihapus, jadi kita bisa menyembunyikan ini */
     display: none;
 }
 
-.nokos-page header {
+.saldo-info {
+    background-color: #00acc1; /* Warna latar belakang disesuaikan */
+    color: #fff; /* Warna teks disesuaikan */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.1em; /* Ukuran font sedikit lebih besar */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Efek shadow lebih halus */
+}
+
+.saldo-info strong {
+    display: block;
+    font-size: 1.8em; /* Ukuran font saldo lebih besar */
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; /* Margin bawah sedikit lebih besar */
+    padding: 0 15px; /* Tambahkan padding kiri dan kanan */
+}
+
+.quick-actions a {
+    display: block;
+    background-color: #00acc1; /* Warna tombol disesuaikan */
+    color: #fff; /* Warna teks tombol disesuaikan */
+    padding: 12px 20px; /* Padding tombol lebih besar */
+    border-radius: 10px; /* Sudut tombol lebih bulat */
+    text-decoration: none;
+    font-size: 1em; /* Ukuran font tombol disesuaikan */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Efek shadow tombol */
+    transition: background-color 0.3s ease;
+    text-align: center; /* Teks di tengah tombol */
+}
+
+.quick-actions a:hover {
+    background-color: #00897b; /* Efek hover yang lebih gelap */
+}
+
+.announcement {
+    background-color: #29b6f6; /* Warna latar belakang announcement disesuaikan */
+    color: #fff; /* Warna teks announcement disesuaikan */
+    padding: 12px; /* Padding announcement disesuaikan */
+    text-align: center;
+    font-size: 0.9em;
+}
+
+section {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+section h2 {
+    color: #333;
+    border-bottom: 3px solid #00acc1; /* Garis bawah judul bagian disesuaikan */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.4em; /* Ukuran font judul bagian disesuaikan */
+    font-weight: bold;
+    text-align: center; /* Judul bagian di tengah */
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ukuran minimum item grid disesuaikan */
+    gap: 15px; /* Jarak antar item grid disesuaikan */
+}
+
+.category-item {
+    background-color: #fff;
+    border-radius: 15px; /* Sudut item lebih bulat */
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.category-item:hover {
+    transform: scale(1.03); /* Efek hover yang lebih halus */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Efek shadow saat hover */
+}
+
+.category-item img {
+    max-width: 70px; /* Ukuran gambar disesuaikan */
+    height: 70px; /* Tinggi gambar disesuaikan */
+    margin-bottom: 10px;
+    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    object-fit: cover; /* Memastikan gambar pas di dalam lingkaran */
+}
+
+.category-item span {
+    display: block;
+    font-size: 0.9em; /* Ukuran font teks item disesuaikan */
+    color: #555;
+}
+
+/* Gaya khusus untuk tombol Dest dan Wallet */
+.category-item span:contains("Dest"),
+.category-item span:contains("Wallet") {
+    background-color: #a7f3d0; /* Warna hijau muda */
+    color: #166534; /* Warna hijau tua untuk teks */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
+    display: inline-block; /* Agar padding bekerja dengan baik */
+    margin-top: 5px; /* Tambahkan sedikit margin atas */
+}
+
+/* Gaya untuk Halaman Nokos */
+#nokosPage {
+    display: none;
+}
+
+#nokosPage header {
     background-color: #00acc1;
     color: #fff;
     padding: 15px;
@@ -231,7 +174,7 @@ body {
     box-sizing: border-box;
 }
 
-.nokos-page header a {
+#nokosPage header a {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
@@ -239,50 +182,42 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.nokos-page header a:hover {
+#nokosPage header a:hover {
     opacity: 1;
 }
 
-.nokos-page header h1 {
+#nokosPage header h1 {
     font-size: 1.2em;
     margin: 0;
     font-weight: 600;
 }
 
-.nokos-page .navigation {
-    background-color: #e0f7fa;
+#nokosPage .navigation {
+    background-color: #f0f8ff;
+    padding: 10px;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
     border-bottom: 1px solid #b2dfdb;
+}
+
+#nokosPage .navigation a {
+    color: #00acc1;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
     font-size: 0.9em;
 }
 
-.nokos-page .nav-item {
-    color: #00acc1;
-    text-decoration: none;
-    padding: 8px 12px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+#nokosPage .navigation a.active {
+    font-weight: bold;
 }
 
-.nokos-page .nav-item:hover {
-    color: #00897b;
-}
-
-.nokos-page .nav-item.active {
-    color: #00897b;
-    font-weight: 700;
-}
-
-.nokos-page .content {
+#nokosPage .content {
     padding: 15px;
-    text-align: center;
     box-sizing: border-box;
 }
 
-.nokos-page .balance {
+#nokosPage .balance {
     background-color: #f0f8ff;
     color: #00acc1;
     padding: 12px;
@@ -292,149 +227,79 @@ body {
     font-size: 0.9em;
 }
 
-.nokos-page .country-select {
-    margin-bottom: 8px;
-    text-align: left;
+#nokosPage .country-select,
+#nokosPage .operator-select,
+#nokosPage .service-info {
+    margin-bottom: 15px;
 }
 
-.nokos-page .country-select label {
+#nokosPage .country-select label,
+#nokosPage .operator-select label,
+#nokosPage .service-info label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
     color: #333;
     font-weight: 500;
     font-size: 0.8em;
 }
 
-.nokos-page .country-select select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
-    background-color: #fff;
-    font-size: 0.8em;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-color: #f9f9f9;
-    border-color: #b2dfdb;
-    color: #333;
-}
-
-.nokos-page .country-select select:focus {
-    border-color: #00acc1;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 172, 193, 0.5);
-}
-
-.nokos-page .country-select select option {
-    font-size: 0.8em;
-    color: #333;
-    background-color: #fff;
-    padding: 8px;
-}
-
-.nokos-page .country-select select option:hover {
-    background-color: #e0f7fa;
-}
-
-.nokos-page .operator-select, .nokos-page .service-info {
-    margin-bottom: 8px;
-    text-align: left;
-}
-
-.nokos-page .operator-select label {
-    display: block;
-    margin-bottom: 3px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
-}
-
-.nokos-page .operator-select select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
-    background-color: #fff;
-    font-size: 0.8em;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-color: #f9f9f9;
-    border-color: #b2dfdb;
-    color: #333;
-}
-
-.nokos-page .operator-select select:focus {
-    border-color: #00acc1;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 172, 193, 0.5);
-}
-
-.nokos-page .operator-select select option {
-    font-size: 0.8em;
-    color: #333;
-    background-color: #fff;
-    padding: 8px;
-}
-
-.nokos-page .operator-select select option:hover {
-    background-color: #e0f7fa;
-}
-
-.nokos-page .service-info label {
-    display: block;
-    margin-bottom: 3px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.8em;
-}
-
-.nokos-page .service-info input[type="text"] {
+#nokosPage .country-select select,
+#nokosPage .operator-select select,
+#nokosPage .service-info input[type="text"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
-    background-color: #f9f9f9;
     font-size: 0.8em;
 }
 
-.nokos-page .info-text {
+#nokosPage .info-text {
     color: #777;
     font-size: 0.7em;
-    margin-bottom: 8px;
-    text-align: left;
+    margin-top: 3px;
 }
 
-.nokos-page .product-details {
+#nokosPage .product-details {
     background-color: #f9f9f9;
     border: 1px solid #eee;
-    padding: 12px;
+    padding: 10px;
     border-radius: 10px;
-    margin-bottom: 12px;
-    text-align: left;
+    margin-bottom: 15px;
     font-size: 0.8em;
 }
 
-.nokos-page .help-link {
-    color: #00acc1;
-    text-decoration: none;
+#nokosPage .product-details strong {
     display: block;
-    margin-top: 12px;
+    margin-bottom: 3px;
+    color: #00acc1;
+    font-weight: 600;
+}
+
+#nokosPage .product-details p {
+    margin: 3px 0;
+    color: #555;
+    font-size: 0.75em;
+}
+
+#nokosPage .help-link {
+    display: inline-block;
+    background-color: #00acc1;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
     font-weight: 500;
     font-size: 0.8em;
+    cursor: pointer;
 }
 
-.nokos-page .hidden-elements {
+#nokosPage .help-link:hover {
+    background-color: #00897b;
+}
+
+.hidden-elements {
     display: none;
 }
 
@@ -474,48 +339,37 @@ body {
 
 #premiumAppsPage .premium-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
     padding: 15px;
-}
-
-#premiumAppsPage .app-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    height: auto;
-    width: 100%;
     box-sizing: border-box;
 }
 
+#premiumAppsPage .app-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    font-size: 0.8em;
+}
+
 #premiumAppsPage .app-item:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 #premiumAppsPage .app-item img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 3px;
-    object-fit: contain;
-    opacity: 0.8;
+    max-width: 60px;
+    height: auto;
+    margin-bottom: 8px;
 }
 
 #premiumAppsPage .app-item span {
-    font-size: 0.75em;
-    color: #333;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: block;
+    color: #555;
 }
 
 /* Gaya untuk Halaman Youtube Premium */
@@ -579,36 +433,39 @@ body {
 }
 
 #youtubePremiumPage .nominal-options h2 {
-    color: #00acc1;
+    font-size: 1.1em;
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 1em;
-    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }
 
 #youtubePremiumPage .nominal-options .option {
     background-color: #f9f9f9;
     border: 1px solid #eee;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
     font-size: 0.8em;
-    box-sizing: border-box;
 }
 
 #youtubePremiumPage .nominal-options .option p {
-    margin: 3px 0;
+    margin: 5px 0;
     color: #555;
-    font-size: 0.75em;
 }
 
 #youtubePremiumPage .nominal-options .option strong {
+    display: block;
     color: #00acc1;
     font-weight: 600;
 }
 
 /* Gaya untuk Halaman Suntik Manual */
-.suntik-manual-page header {
+#suntikManualPage {
+    display: none;
+}
+
+#suntikManualPage header {
     background-color: #00acc1;
     color: #fff;
     padding: 15px;
@@ -619,7 +476,7 @@ body {
     box-sizing: border-box;
 }
 
-.suntik-manual-page header a {
+#suntikManualPage header a {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
@@ -627,57 +484,59 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.suntik-manual-page header a:hover {
+#suntikManualPage header a:hover {
     opacity: 1;
 }
 
-.suntik-manual-page header h1 {
+#suntikManualPage header h1 {
     font-size: 1.2em;
     margin: 0;
     font-weight: 600;
 }
 
-.suntik-manual-page .content {
+#suntikManualPage .content {
     padding: 15px;
-    text-align: center;
     box-sizing: border-box;
 }
 
-.suntik-manual-page .product-category {
+#suntikManualPage .product-category {
     background-color: #f9f9f9;
     border: 1px solid #eee;
-    padding: 12px;
+    padding: 15px;
     border-radius: 10px;
     margin-bottom: 15px;
-    text-align: left;
-    font-size: 0.8em;
-    box-sizing: border-box;
+    font-size: 0.9em;
 }
 
-.suntik-manual-page .product-category h2 {
-    color: #00acc1;
+#suntikManualPage .product-category h2 {
+    font-size: 1.1em;
     margin-top: 0;
-    margin-bottom: 5px;
-    font-weight: 600;
-    font-size: 1em;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
 }
 
-.suntik-manual-page .button-suntik {
+#suntikManualPage .product-category p {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+}
+
+#suntikManualPage .button-suntik {
     display: inline-block;
     background-color: #00acc1;
     color: white;
-    padding: 8px 12px;
+    padding: 10px 15px;
     text-decoration: none;
     border-radius: 8px;
-    margin-top: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
     font-weight: 500;
-    font-size: 0.75em;
+    font-size: 0.8em;
+    cursor: pointer;
 }
 
-.suntik-manual-page .button-suntik:hover {
+#suntikManualPage .button-suntik:hover {
     background-color: #00897b;
-    transform: translateY(-2px);
 }
 
 /* Gaya untuk Halaman View TT Only */
@@ -936,3 +795,78 @@ body {
 #panelBotPage .button-beli:hover {
     background-color: #00897b;
 }
+
+/* Gaya untuk Halaman Bantuan */
+#bantuanPage {
+    display: none;
+}
+
+#bantuanPage header {
+    background-color: #00acc1;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #b2dfdb;
+    box-sizing: border-box;
+}
+
+#bantuanPage header a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+#bantuanPage header a:hover {
+    opacity: 1;
+}
+
+#bantuanPage header h1 {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 600;
+}
+
+#bantuanPage .content {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#bantuanPage .bantuan-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+#bantuanPage .bantuan-item h3 {
+    color: #00acc1;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+#bantuanPage .bantuan-item p {
+    color: #555;
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+
+#bantuanPage .bantuan-item a {
+    display: block;
+    color: #00acc1;
+    text-decoration: none;
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+#bantuanPage .bantuan-item .note {
+    color: #777;
+    font-size: 0.7em;
+    margin-top: 3px;
+}}
