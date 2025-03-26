@@ -28,7 +28,7 @@ const totalBayarDiv = document.querySelector('#buyViewTTPage .total-bayar');
 const deskripsiInput = document.getElementById('deskripsi');
 const beliSekarangViewTTButton = document.getElementById('beliSekarangViewTT');
 const nokosPriceElement = document.getElementById('nokosPrice');
-const panelBotButton = Array.from(document.querySelectorAll('.main-page .category-item span')).find(span => span.textContent === 'Panel Bot')?.parentNode;
+const panelBotButton = document.getElementById('panelBotButton');
 const panelBotPage = document.getElementById('panelBotPage');
 const backToMainFromPanelBotButton = document.getElementById('backToMainFromPanelBot');
 const beliSekarangPanelBotButton = document.getElementById('beliSekarangPanelBot');
@@ -37,6 +37,9 @@ const namaPanelInput = document.getElementById('namaPanel');
 const cpuPanelInput = document.getElementById('cpuPanel');
 const ramPanelInput = document.getElementById('ramPanel');
 const storagePanelInput = document.getElementById('storagePanel');
+const bantuanButton = document.getElementById('bantuanButton');
+const bantuanPage = document.getElementById('bantuanPage');
+const backToMainFromBantuanButton = document.getElementById('backToMainFromBantuan');
 
 let selectedProduct = null;
 let pricePer100Views = 0;
@@ -64,7 +67,7 @@ if (saldoInfoChildren.length > 1) {
 
 allButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (button.id !== 'nokosButton' && button.id !== 'premAppsButton' && button.id !== 'viewTTOnlyButton' && !button.querySelector('span').textContent.includes("Suntik Manual") && button.querySelector('span').textContent !== 'Vps') {
+        if (button.id !== 'nokosButton' && button.id !== 'premAppsButton' && button.id !== 'viewTTOnlyButton' && button.id !== 'panelBotButton' && !button.querySelector('span').textContent.includes("Suntik Manual") && button.querySelector('span').textContent !== 'Vps') {
             alert(`Tombol "${button.querySelector('span').textContent}" diklik!`);
         }
     });
@@ -115,10 +118,13 @@ telegramLink.addEventListener('click', (event) => {
     event.preventDefault();
 
     const selectedCountry = countrySelect.value;
-    let telegramMessage = "Mas, saya mau beli nokos ini negara ";
+    let telegramMessage = "";
+    const premiumEmojis = '💎✨👑'; // Emoji premium
 
     if (selectedCountry) {
-        telegramMessage += selectedCountry.toLowerCase();
+        telegramMessage = `🔥 *PESANAN NOKOS* 🔥 ⭐ ${premiumEmojis}\n\n🌍 *Negara:* ${selectedCountry.toLowerCase()}\n\nTerima kasih telah order di Ravaelstore! 🙏`;
+    } else {
+        telegramMessage = `🔥 *PESANAN NOKOS* 🔥 ⭐ ${premiumEmojis}\n\n🌍 *Negara:* (belum dipilih)\n\nTerima kasih telah order di Ravaelstore! 🙏`;
     }
 
     const telegramUrl = `https://t.me/RavaeIStore?text=${encodeURIComponent(telegramMessage)}`;
@@ -201,6 +207,7 @@ beliSekarangViewTTButton.addEventListener('click', (event) => {
     const deskripsi = deskripsiInput.value.trim();
     const totalBayarText = totalBayarDiv.textContent;
     const totalHarga = totalBayarText.includes(':') ? totalBayarText.split(': ')[1] : totalBayarText;
+    const premiumEmojis = '💎✨👑'; // Contoh emoji premium
 
     if (!linkVideo) {
         alert('Link Video TikTok harus diisi.');
@@ -212,10 +219,17 @@ beliSekarangViewTTButton.addEventListener('click', (event) => {
         return;
     }
 
-    const whatsappMessage = `Saya mau order View TT:\n\nLink Video: ${linkVideo}\nJumlah: ${jumlah}\nDeskripsi: ${deskripsi}\nHarga: ${totalHarga}`;
+    const orderText = `🔥 *PESANAN VIEW TIKTOK* 🔥 ⭐ ${premiumEmojis}\n\n🔗 *Link Video:* ${linkVideo}\n🔢 *Jumlah:* ${jumlah}\n📝 *Deskripsi:* ${deskripsi}\n💰 *Total Bayar:* ${totalHarga}\n\nTerima kasih telah order di Ravaelstore! 🙏`;
+
     const whatsappNumber = '6282118257071';
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderText)}`;
+
+    navigator.clipboard.writeText(orderText).then(() => {
+        window.location.href = whatsappUrl;
+    }).catch(err => {
+        console.error('Gagal menyalin teks: ', err);
+        alert('❌ Gagal mengarahkan ke WhatsApp. Silakan coba lagi.');
+    });
 });
 
 if (panelBotButton) {
@@ -245,13 +259,14 @@ beliSekarangPanelBotButton.addEventListener('click', (event) => {
     const cpuPanel = cpuPanelInput.value.trim();
     const ramPanel = ramPanelInput.value.trim();
     const storagePanel = storagePanelInput.value.trim();
+    const premiumEmojis = '💎✨👑'; // Emoji premium untuk Panel Bot
 
     if (!jumlah || parseInt(jumlah) <= 0) {
         alert('Jumlah harus diisi dan lebih dari 0.');
         return;
     }
 
-    const whatsappMessage = `Halo mas, saya mau order panel bot:\n\nJumlah: ${jumlah}\nNama Panel: ${namaPanel}\nCPU Panel: ${cpuPanel}\nRAM Panel: ${ramPanel}\nStorage Panel: ${storagePanel}`;
+    const whatsappMessage = `🔥 *PESANAN PANEL BOT* 🔥 ⭐ ${premiumEmojis}\n\n📦 *Jumlah:* ${jumlah}\n🏷️ *Nama Panel:* ${namaPanel}\n⚙️ *CPU Panel:* ${cpuPanel}\n💾 *RAM Panel:* ${ramPanel}\n💾 *Storage Panel:* ${storagePanel}\n\nTerima kasih telah order di Ravaelstore! 🙏`;
     const whatsappNumber = '6282118257071';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
@@ -289,3 +304,13 @@ if (quickActionsDiv) {
         }
     });
 }
+
+bantuanButton.addEventListener('click', () => {
+    mainPage.style.display = 'none';
+    bantuanPage.style.display = 'block';
+});
+
+backToMainFromBantuanButton.addEventListener('click', () => {
+    bantuanPage.style.display = 'none';
+    mainPage.style.display = 'block';
+});
