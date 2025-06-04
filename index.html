@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Web Multifitur Deluxe</title>
+    <style>
+        /* --- CSS WhatsApp Dark Mode Deluxe --- */
+        :root {
+            --primary-bg: #0b141a;
+            --secondary-bg: #121b22;
+            --header-bg: #1f2c34;
+            --input-field-bg: #2a3942;
+            --text-primary: #e0e0e0;
+            --text-secondary: #8696a0;
+            --accent-green: #00a884;
+            --accent-green-darker: #008a70;
+            --message-out-bg: #005c4b;
+            --message-in-bg: #1f2c34;
+            --message-group-in-bg: #262d31;
+            --link-color: #53bdeb;
+            --border-color: #2c3943;
+            --error-color: #ff5f5f;
+            --card-padding: 20px;
+            --border-radius-s: 5px;
+            --border-radius-m: 8px;
+            --border-radius-l: 22px;
+            --menu-bg: #233138;
+            --default-pp-bg: #3A4B53; /* Warna background untuk placeholder foto profil */
+            --checkmark-color-sent: #8696a0; /* Abu-abu untuk 1 centang */
+            --checkmark-color-delivered: #8696a0; /* Abu-abu untuk 2 centang */
+            --checkmark-color-read: #53bdeb; /* Biru untuk sudah dibaca */
+        }
+
+        html, body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--primary-bg); color: var(--text-primary);
+            display: flex; justify-content: center; overflow: hidden;
+        }
+        .app-wrapper {
+            width: 100%; max-width: 500px; height: 100%; background-color: var(--secondary-bg);
+            display: flex; flex-direction: column; box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border-radius: 0; overflow: hidden;
+        }
+        @media (min-width: 501px) {
+            .app-wrapper { border-radius: var(--border-radius-m); max-height: 95vh; margin-top: 2.5vh; }
+        }
+        .chat-header {
+            background-color: var(--header-bg); padding: 12px 18px; display: flex;
+            align-items: center; gap: 15px; min-height: 60px; flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .chat-header .avatar {
+            width: 42px; height: 42px; background-color: var(--message-out-bg);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-weight: bold; color: #fff; font-size: 1.2em;
+        }
+        .chat-header .chat-title-info { flex-grow: 1; } /* Agar status online bisa di kanan */
+        .chat-header .chat-title-info .chat-name { font-weight: 500; font-size: 1.1em; color: var(--text-primary); }
+        .chat-header .chat-title-info .chat-status { font-size: 0.8em; color: var(--text-secondary); }
+        .online-count { /* BARU: Styling untuk jumlah online */
+            font-size: 0.75em;
+            color: var(--accent-green);
+            background-color: rgba(0, 168, 132, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .main-content-area { flex-grow: 1; overflow-y: auto; background-color: var(--primary-bg); }
+        .main-content-area::-webkit-scrollbar { width: 6px; }
+        .main-content-area::-webkit-scrollbar-thumb { background-color: var(--input-field-bg); border-radius: 3px; }
+        .main-content-area::-webkit-scrollbar-track { background-color: var(--primary-bg); }
+
+        #fakeStorySection { /* ... CSS Fake Story tidak berubah signifikan ... */ padding: var(--card-padding); text-align: left; background-color: var(--secondary-bg); height: 100%; display: flex; flex-direction: column; }
+        #fakeStorySection h2 { text-align: center; color: var(--accent-green); margin-top:0; margin-bottom: 25px; font-weight: 500; }
+        .form-group { margin-bottom: 18px; } .form-group label { display: block; margin-bottom: 6px; color: var(--text-secondary); font-size: 0.9em; }
+        #fakeStorySection input[type="text"], #fakeStorySection textarea, #fakeStorySection input[type="file"] { width: 100%; padding: 12px; margin-bottom: 5px; border: 1px solid var(--border-color); border-radius: var(--border-radius-s); box-sizing: border-box; font-size: 1em; background-color: var(--input-field-bg); color: var(--text-primary); }
+        #fakeStorySection textarea { min-height: 80px; resize: vertical; } #fakeStorySection input[type="file"] { padding: 10px 12px; cursor: pointer; }
+        #fakeStorySection input[type="text"]::placeholder, #fakeStorySection textarea::placeholder { color: var(--text-secondary); opacity: 0.7; }
+        #fakeStorySection input[type="text"]:focus, #fakeStorySection textarea:focus, #fakeStorySection input[type="file"]:focus { outline: none; border-color: var(--accent-green); background-color: var(--header-bg); }
+        .button-group { margin-top: 20px; display: flex; gap: 10px; } .button-group button { flex: 1; }
+        #generateStoryButton, #backToChatButton { background-color: var(--accent-green); color: white; padding: 12px 20px; border: none; border-radius: var(--border-radius-s); cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; text-transform: uppercase; }
+        #generateStoryButton:hover, #backToChatButton:hover { background-color: var(--accent-green-darker); }
+        #backToChatButton { background-color: var(--input-field-bg); } #backToChatButton:hover { background-color: var(--border-color); }
+        #resultContainerStory { margin-top: 25px; padding: var(--card-padding); background-color: var(--header-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-m); text-align: center; }
+        #resultContainerStory h3 { color: var(--accent-green); margin-top:0; margin-bottom: 15px; font-weight: 500; }
+        #resultContainerStory img { max-width: 100%; height: auto; border-radius: var(--border-radius-s); margin-bottom: 15px; border: 2px solid var(--input-field-bg); }
+        #downloadLinkStory { display: inline-block; text-decoration: none; background-color: var(--accent-green); color: white; padding: 10px 20px; border-radius: var(--border-radius-s); font-size: 0.95em; font-weight: 500; transition: background-color 0.2s ease; }
+        #downloadLinkStory:hover { background-color: var(--accent-green-darker); }
+
+        #downloaderSection, #groupChatSection { height: 100%; display: flex; flex-direction: column; }
+        .messages-area { flex-grow: 1; padding: 10px 15px; overflow-y: auto; display: flex; flex-direction: column; }
+        .message-bubble {
+            padding: 0; border-radius: var(--border-radius-m); margin-bottom: 8px;
+            max-width: 85%; word-wrap: break-word; clear: both; position: relative;
+            opacity: 0; transform: translateY(10px); animation: slideUpFadeIn 0.3s ease forwards;
+            display: flex; align-items: flex-start;
+        }
+        @keyframes slideUpFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        .message-bubble .profile-pic-bubble {
+            width: 36px; height: 36px; border-radius: 50%; background-color: var(--default-pp-bg);
+            margin-right: 8px; flex-shrink: 0; object-fit: cover; border: 1px solid var(--border-color);
+        }
+        .message-bubble.user .profile-pic-bubble { margin-right: 0; margin-left: 8px; }
+
+        .message-inner-wrapper {
+            padding: 8px 12px; border-radius: var(--border-radius-m);
+            box-shadow: 0 1px 1.5px rgba(0,0,0,0.15); width: 100%;
+            display: flex; /* Untuk layout teks dan status centang */
+            flex-direction: column;
+        }
+
+        .message-bubble.user { margin-left: auto; flex-direction: row-reverse; }
+        .message-bubble.user .message-inner-wrapper { background-color: var(--message-out-bg); color: var(--text-primary); border-top-right-radius: var(--border-radius-s); }
+        .message-bubble.bot .message-inner-wrapper, .message-bubble.group-in .message-inner-wrapper { background-color: var(--message-group-in-bg); color: var(--text-primary); border-top-left-radius: var(--border-radius-s); }
+        .message-bubble.bot .message-inner-wrapper { background-color: var(--message-in-bg); }
+
+        .message-bubble.group-in .sender-name {
+            font-size: 0.85em; color: var(--accent-green); font-weight: 600;
+            margin-bottom: 4px; display: block;
+        }
+        .message-inner-wrapper p { margin: 0; line-height: 1.4; font-size: 0.98em;}
+        .message-inner-wrapper p + p { margin-top: 5px; }
+
+        .message-inner-wrapper .media-attachment {
+            margin-top: 5px; max-width: 100%; border-radius: var(--border-radius-s); display: block;
+        }
+        .message-inner-wrapper .media-attachment video, .message-inner-wrapper .media-attachment audio { width: 100%; }
+
+        /* BARU: Styling untuk status pesan (centang) */
+        .message-status {
+            font-size: 0.7em;
+            color: var(--checkmark-color-sent);
+            align-self: flex-end; /* Posisikan ke kanan bawah */
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .message-status .checkmark {
+            font-size: 0.9em; /* Ukuran ikon centang */
+            line-height: 1; /* Agar tidak ada spasi ekstra */
+        }
+        .message-status.delivered .checkmark { color: var(--checkmark-color-delivered); }
+        .message-status.read .checkmark { color: var(--checkmark-color-read); }
+
+        .message-bubble.system-message, .message-bubble.system-error {
+            background-color: transparent; color: var(--text-secondary); font-style: italic;
+            font-size: 0.8em; text-align: center; width: auto; max-width: 90%;
+            padding: 5px 10px; margin-left: auto; margin-right: auto;
+            margin-top: 5px; margin-bottom: 10px; box-shadow: none;
+            border-radius: var(--border-radius-l); background-color: rgba(42, 57, 66, 0.7);
+            display: block;
+        }
+        .message-bubble.system-error { color: var(--error-color); background-color: rgba(255, 95, 95, 0.1); }
+
+        .input-bar { display: flex; align-items: center; padding: 8px 10px; background-color: var(--header-bg); min-height: 58px; position: relative; flex-shrink: 0; border-top: 1px solid var(--border-color); }
+        .input-bar .text-input-wrapper { flex-grow: 1; background-color: var(--input-field-bg); border-radius: var(--border-radius-l); padding: 0 15px; display: flex; align-items: center; min-height: 42px; }
+        .input-bar input[type="text"] { flex-grow: 1; padding: 10px 0; border: none; background-color: transparent; color: var(--text-primary); font-size: 1em; }
+        .input-bar input[type="text"]::placeholder { color: var(--text-secondary); } .input-bar input[type="text"]:focus { outline: none; }
+        .menu-button, #groupChatMenuButton { background: none; border: none; color: var(--text-secondary); font-size: 1.6em; padding: 8px; margin: 0 5px; cursor: pointer; transition: color 0.2s ease; line-height: 1; }
+        .menu-button:hover, #groupChatMenuButton:hover { color: var(--text-primary); }
+        #groupChatMenuButton { margin-left: 0; margin-right: 8px;}
+        .send-button { background-color: var(--accent-green); color: white; border-radius: 50%; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; padding: 0; font-size: 1.3em; cursor: pointer; border: none; margin-left: 8px; transition: background-color 0.2s ease; flex-shrink: 0; }
+        .send-button:hover { background-color: var(--accent-green-darker); }
+        #attachment-menu, #group-chat-attachment-menu { position: absolute; bottom: 65px; background-color: var(--menu-bg); border-radius: var(--border-radius-m); box-shadow: 0px -4px 15px rgba(0,0,0,0.35); padding: 8px 0; z-index: 1000; display: none; min-width: 230px; animation: slideUpMenu 0.2s ease-out; }
+        #attachment-menu { right: 10px; } #group-chat-attachment-menu { right: 50px; }
+        @keyframes slideUpMenu { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #attachment-menu ul, #group-chat-attachment-menu ul { list-style: none; padding: 0; margin: 0; }
+        #attachment-menu ul li, #group-chat-attachment-menu ul li { padding: 14px 22px; color: var(--text-primary); cursor: pointer; font-size: 1em; display: flex; align-items: center; transition: background-color 0.15s ease; }
+        #attachment-menu ul li:hover, #group-chat-attachment-menu ul li:hover { background-color: var(--input-field-bg); }
+        #attachment-menu ul li .menu-icon, #group-chat-attachment-menu ul li .menu-icon { margin-right: 18px; width: 24px; text-align: center; font-size: 1.2em; color: var(--text-secondary); }
+        #groupChatConnectionStatus { padding: 8px 15px; font-size: 0.85em; text-align: center; background-color: var(--input-field-bg); color: var(--text-secondary); border-bottom: 1px solid var(--border-color); flex-shrink: 0; }
+
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="chat-header">
+            <div class="avatar" id="appAvatar">🚀</div>
+            <div class="chat-title-info">
+                <div class="chat-name" id="appName">Bot Web Multifitur</div>
+                <div class="chat-status" id="appStatus">Online</div>
+            </div>
+            <span class="online-count" id="onlineUserCount">0 Online</span> </div>
+
+        <div class="main-content-area">
+            <div id="downloaderSection" style="display: flex; flex-direction: column; height: 100%;">
+                <div class="messages-area" id="messagesAreaDownloader"></div>
+            </div>
+
+            <div id="fakeStorySection" style="display: none; height: 100%; overflow-y: auto;">
+                <h2 style="text-align: center; color: var(--accent-green); margin-top:0; margin-bottom: 20px;">Fake Story Generator</h2>
+                <div class="form-group"><label for="usernameInput">Nama Pengguna:</label><input type="text" id="usernameInput" placeholder="Contoh: Bos Keren"></div>
+                <div class="form-group"><label for="captionInput">Caption Story:</label><textarea id="captionInput" placeholder="Contoh: Lagi santai nih... ✨"></textarea></div>
+                <div class="form-group"><label for="profilePicInputFS">Upload Foto Profil (Opsional):</label><input type="file" id="profilePicInputFS" accept="image/*"></div>
+                <div class="form-group"><label for="backgroundPicInputFS">Upload Background Story (Opsional):</label><input type="file" id="backgroundPicInputFS" accept="image/*"></div>
+                <div class="button-group"><button id="backToChatButton">Kembali</button> <button id="generateStoryButton">Buat Story!</button></div>
+                <div id="loadingMessageStory" style="display:none;">⏳ Membuat story...</div><div id="errorDisplayStory" class="error" style="display:none;"></div>
+                <div id="resultContainerStory" style="display:none;"><h3>Hasil Story:</h3><img id="storyImage" src="#" alt="Generated Story"><a id="downloadLinkStory" href="#" download="fake_story.png">Unduh Story</a></div>
+            </div>
+
+            <div id="groupChatSection" style="display: none; flex-direction: column; height: 100%;">
+                <div id="groupChatConnectionStatus">Menghubungkan ke server chat...</div>
+                <div class="messages-area" id="messagesAreaGroupChat"></div>
+            </div>
+        </div>
+
+        <div class="input-bar" id="mainInputBar" style="display: flex;">
+            <div class="text-input-wrapper"><input type="text" id="commandInput" placeholder="Ketik perintah..."></div>
+            <button class="menu-button" id="menuButton">⋮</button><button class="send-button" id="sendButtonDownloader">➢</button>
+            <div id="attachment-menu"><ul><li data-action="show-downloader"><span class="menu-icon">📥</span>Mode Downloader</li><li data-action="show-fakestory"><span class="menu-icon">🖌️</span>Buat Fake Story</li><li data-action="show-groupchat"><span class="menu-icon">💬</span>Grup Chat</li><li data-action="info-tiktok"><span class="menu-icon">ℹ️</span>Info Downloader</li></ul></div>
+        </div>
+        <div class="input-bar" id="groupChatInputBar" style="display: none;">
+            <button class="menu-button" id="groupChatMenuButton">⋮</button>
+            <div class="text-input-wrapper"><input type="text" id="groupChatMessageInput" placeholder="Ketik pesan..."></div>
+            <button class="send-button" id="sendGroupChatMessageButton">➢</button>
+            <div id="group-chat-attachment-menu" style="display: none;">
+                 <ul>
+                     <li data-gaction="send-image"><span class="menu-icon">🖼️</span>Kirim Gambar</li>
+                     <li data-gaction="send-video"><span class="menu-icon">🎬</span>Kirim Video</li>
+                     <li data-gaction="send-audio"><span class="menu-icon">🎵</span>Kirim Audio</li>
+                     <li data-gaction="change-name"><span class="menu-icon">✏️</span>Ganti Nama</li>
+                     <li data-gaction="change-profile-pic"><span class="menu-icon">👤</span>Ganti Foto Profil</li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="storyCanvas" style="display: none;"></canvas>
+    <input type="file" id="groupAttachmentInput" style="display: none;" />
+    <input type="file" id="profilePicInput" style="display: none;" accept="image/*" />
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Variabel Global dan Konstanta ---
+        const TIKTOK_API_KEY = "VintexMD";
+        const DEFAULT_FAKESTORY_PP_URL = 'https://telegra.ph/file/24fa902ead26340f3df2c.png';
+        const DEFAULT_GROUP_AVATAR_URL = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233A4B53"/><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="50" fill="white">?</text></svg>';
+
+        // Elemen UI
+        const appNameTitle = document.getElementById('appName');
+        const appStatus = document.getElementById('appStatus');
+        const appAvatar = document.getElementById('appAvatar');
+        const onlineUserCount = document.getElementById('onlineUserCount'); // BARU
+        const downloaderSection = document.getElementById('downloaderSection');
+        const messagesAreaDownloader = document.getElementById('messagesAreaDownloader');
+        const commandInput = document.getElementById('commandInput');
+        const sendButtonDownloader = document.getElementById('sendButtonDownloader');
+        const fakeStorySection = document.getElementById('fakeStorySection');
+        const usernameInput = document.getElementById('usernameInput');
+        const captionInput = document.getElementById('captionInput');
+        const profilePicInputFS = document.getElementById('profilePicInputFS');
+        const backgroundPicInputFS = document.getElementById('backgroundPicInputFS');
+        const generateStoryButton = document.getElementById('generateStoryButton');
+        const backToChatButton = document.getElementById('backToChatButton');
+        const loadingMessageStory = document.getElementById('loadingMessageStory');
+        const errorDisplayStory = document.getElementById('errorDisplayStory');
+        const resultContainerStory = document.getElementById('resultContainerStory');
+        const storyImage = document.getElementById('storyImage');
+        const downloadLinkStory = document.getElementById('downloadLinkStory');
+        const storyCanvas = document.getElementById('storyCanvas');
+        const ctx = storyCanvas.getContext('2d');
+        const menuButton = document.getElementById('menuButton');
+        const attachmentMenu = document.getElementById('attachment-menu');
+        const mainInputBar = document.getElementById('mainInputBar');
+        const groupChatInputBar = document.getElementById('groupChatInputBar');
+        const groupChatSection = document.getElementById('groupChatSection');
+        const groupChatConnectionStatus = document.getElementById('groupChatConnectionStatus');
+        const messagesAreaGroupChat = document.getElementById('messagesAreaGroupChat');
+        const groupChatMessageInput = document.getElementById('groupChatMessageInput');
+        const sendGroupChatMessageButton = document.getElementById('sendGroupChatMessageButton');
+        const groupChatMenuButton = document.getElementById('groupChatMenuButton');
+        const groupChatAttachmentMenu = document.getElementById('group-chat-attachment-menu');
+        const groupAttachmentInput = document.getElementById('groupAttachmentInput');
+        const profilePicInput = document.getElementById('profilePicInput');
+
+        let currentView = 'downloader';
+        let websocket = null;
+        let userNickname = null;
+        let userProfilePictures = {}; // {nickname: dataURL}
+
+        // --- Fungsi Navigasi ---
+        function showDownloaderView() { downloaderSection.style.display = 'flex'; fakeStorySection.style.display = 'none'; groupChatSection.style.display = 'none'; mainInputBar.style.display = 'flex'; groupChatInputBar.style.display = 'none'; appNameTitle.textContent = "Bot Web Multifitur"; appStatus.textContent = "Mode Downloader"; appAvatar.textContent = "🚀"; currentView = 'downloader'; if (backToChatButton) backToChatButton.textContent = "Kembali ke Downloader"; if (attachmentMenu.style.display === 'block') attachmentMenu.style.display = 'none'; if (groupChatAttachmentMenu.style.display === 'block') groupChatAttachmentMenu.style.display = 'none'; }
+        function showFakeStoryView() { downloaderSection.style.display = 'none'; fakeStorySection.style.display = 'block'; groupChatSection.style.display = 'none'; mainInputBar.style.display = 'none'; groupChatInputBar.style.display = 'none'; appNameTitle.textContent = "Fake Story Generator"; appStatus.textContent = "Mode Buat Story"; appAvatar.textContent = "🖌️"; currentView = 'fakestory'; if (backToChatButton) backToChatButton.textContent = "Kembali"; if(usernameInput) usernameInput.value = ''; if(captionInput) captionInput.value = ''; if(profilePicInputFS) profilePicInputFS.value = null; if(backgroundPicInputFS) backgroundPicInputFS.value = null; if(resultContainerStory) resultContainerStory.style.display = 'none'; if(errorDisplayStory) errorDisplayStory.style.display = 'none'; if (attachmentMenu.style.display === 'block') attachmentMenu.style.display = 'none'; if (groupChatAttachmentMenu.style.display === 'block') groupChatAttachmentMenu.style.display = 'none'; }
+        function showGroupChatView() { downloaderSection.style.display = 'none'; fakeStorySection.style.display = 'none'; groupChatSection.style.display = 'flex'; mainInputBar.style.display = 'none'; groupChatInputBar.style.display = 'flex'; appNameTitle.textContent = "Grup Chat Umum"; appStatus.textContent = "Menghubungkan..."; appAvatar.textContent = "💬"; currentView = 'groupchat'; if (backToChatButton) backToChatButton.textContent = "Kembali"; if (attachmentMenu.style.display === 'block') attachmentMenu.style.display = 'none'; connectWebSocket(); messagesAreaGroupChat.scrollTop = messagesAreaGroupChat.scrollHeight; }
+        if(backToChatButton) { backToChatButton.addEventListener('click', showDownloaderView); }
+
+        // --- Fungsi Utilitas Chat UI (DIPERBARUI untuk foto profil & status centang) ---
+        function addMessageToChatUI(content, senderType, isHtmlOrMedia = false, targetArea = messagesAreaDownloader, senderName = null, mediaElement = null, messageId = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message-bubble', senderType);
+            if(messageId) messageDiv.id = messageId; // Berikan ID untuk update status nantinya
+
+            if (senderType === 'user' || senderType === 'group-in') {
+                const profilePicImg = document.createElement('img');
+                profilePicImg.classList.add('profile-pic-bubble');
+                const picUrl = userProfilePictures[senderName || userNickname]; // Ambil dari userProfilePictures
+                profilePicImg.src = picUrl || DEFAULT_GROUP_AVATAR_URL;
+                profilePicImg.alt = (senderName || userNickname).substring(0,2);
+                messageDiv.appendChild(profilePicImg);
+            }
+
+            const innerWrapper = document.createElement('div');
+            innerWrapper.classList.add('message-inner-wrapper');
+
+            if (senderType === 'group-in' && senderName) {
+                const nameSpan = document.createElement('span');
+                nameSpan.classList.add('sender-name');
+                nameSpan.textContent = senderName;
+                innerWrapper.appendChild(nameSpan);
+            }
+
+            if (mediaElement) { innerWrapper.appendChild(mediaElement); }
+            else if (isHtmlOrMedia) { const contentDiv = document.createElement('div'); contentDiv.innerHTML = content; innerWrapper.appendChild(contentDiv); }
+            else { const p = document.createElement('p'); p.textContent = content; innerWrapper.appendChild(p); }
+
+            // Tambah Status Centang (Hanya untuk pesan 'user')
+            if (senderType === 'user') {
+                const statusSpan = document.createElement('span');
+                statusSpan.classList.add('message-status');
+                statusSpan.innerHTML = '<span class="checkmark">✓</span>'; // Centang satu (Sent/Mengirim)
+                // TODO: Update status ini menjadi ✓✓ (delivered) atau ✓✓ (read) dari server
+                innerWrapper.appendChild(statusSpan);
+            }
+
+            messageDiv.appendChild(innerWrapper);
+            targetArea.appendChild(messageDiv);
+            setTimeout(() => { targetArea.scrollTop = targetArea.scrollHeight; }, 60);
+        }
+
+        // --- Logika Fake Story & TikTok Downloader (TETAP SAMA) ---
+        function loadImageBrowser(url) { return new Promise((resolve, reject) => { const img = new Image(); img.crossOrigin = "Anonymous"; img.onload = () => resolve(img); img.onerror = (err) => { console.error(`Gagal memuat gambar dari: ${url}`, err); reject(new Error(`Gagal memuat gambar dari URL: ${url.substring(0,50)}...`)); }; img.src = url; }); }
+        function wrapTextCenterCanvas(context, textToWrap, x, yBase, maximumWidth, linesHeight, maxLines = 7) { const words = textToWrap.split(' '); let line = ''; let lines = []; context.textAlign = 'center'; context.textBaseline = 'middle'; for (let n = 0; n < words.length; n++) { let testLine = line + words[n] + ' '; let metrics = context.measureText(testLine); let testWidth = metrics.width; if (testWidth > maximumWidth && n > 0) { lines.push(line.trim()); line = words[n] + ' '; } else { line = testLine; } } lines.push(line.trim()); if (lines.length > maxLines) { const slicedLines = lines.slice(0, maxLines - 1); let lastLine = lines[maxLines - 1]; if (lastLine) { const estimatedDotsWidth = context.measureText("...").width; while(lastLine.length > 0 && context.measureText(lastLine + "...").width > maximumWidth) { lastLine = lastLine.slice(0, -1); } slicedLines.push(lastLine + "..."); } else if (slicedLines.length > 0) { slicedLines[slicedLines.length-1] += "..."; } lines = slicedLines; } const totalTextHeight = lines.length * linesHeight; let currentY = yBase - (totalTextHeight / 2) + (linesHeight / 2); lines.forEach(singleLine => { context.fillText(singleLine, x, currentY); currentY += linesHeight; }); }
+        if (generateStoryButton) { generateStoryButton.addEventListener('click', async () => { let username = usernameInput.value.trim() || "Pengguna Keren"; let caption = captionInput.value.trim(); loadingMessageStory.style.display = 'block'; errorDisplayStory.style.display = 'none'; resultContainerStory.style.display = 'none'; if (username.length > 20) username = username.substring(0, 18) + "..."; try { let bgImageToDraw; if (backgroundPicInputFS.files && backgroundPicInputFS.files[0]) { const readerBg = new FileReader(); bgImageToDraw = await new Promise((resolve, reject) => { readerBg.onload = (e) => loadImageBrowser(e.target.result).then(resolve).catch(reject); readerBg.onerror = () => reject(new Error("Gagal membaca file background.")); readerBg.readAsDataURL(backgroundPicInputFS.files[0]); }); } let ppImageToDraw; if (profilePicInputFS.files && profilePicInputFS.files[0]) { const readerPp = new FileReader(); ppImageToDraw = await new Promise((resolve, reject) => { readerPp.onload = (e) => loadImageBrowser(e.target.result).then(resolve).catch(reject); readerPp.onerror = () => reject(new Error("Gagal membaca file PP.")); readerPp.readAsDataURL(profilePicInputFS.files[0]); }); } else { ppImageToDraw = await loadImageBrowser(DEFAULT_FAKESTORY_PP_URL); } storyCanvas.width = 720; storyCanvas.height = 1280; ctx.clearRect(0, 0, storyCanvas.width, storyCanvas.height); if (bgImageToDraw) { ctx.drawImage(bgImageToDraw, 0, 0, storyCanvas.width, storyCanvas.height); } else { const gradient = ctx.createLinearGradient(0, 0, 0, storyCanvas.height); gradient.addColorStop(0, '#2a3942'); gradient.addColorStop(0.5, '#1f2c34'); gradient.addColorStop(1, '#121b22'); ctx.fillStyle = gradient; ctx.fillRect(0, 0, storyCanvas.width, storyCanvas.height); } const ppSize = 100; const ppX = 60; const ppY = 70; ctx.save(); ctx.beginPath(); ctx.arc(ppX + ppSize / 2, ppY + ppSize / 2, ppSize / 2, 0, Math.PI * 2, true); ctx.closePath(); ctx.clip(); ctx.drawImage(ppImageToDraw, ppX, ppY, ppSize, ppSize); ctx.restore(); ctx.beginPath(); ctx.arc(ppX + ppSize / 2, ppY + ppSize / 2, ppSize / 2 + 4, 0, Math.PI * 2, true); ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)'; ctx.lineWidth = 6; ctx.stroke(); ctx.font = 'bold 30px "Segoe UI", Arial, sans-serif'; ctx.fillStyle = '#FFFFFF'; ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 5; ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 2; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(username, ppX + ppSize + 25, ppY + ppSize / 2); ctx.shadowColor = 'transparent'; ctx.font = '38px "Segoe UI", Arial, sans-serif'; ctx.fillStyle = '#FFFFFF'; ctx.shadowColor = 'rgba(0,0,0,0.75)'; ctx.shadowBlur = 6; ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 3; const captionX = storyCanvas.width / 2; const captionY = storyCanvas.height * 0.60; const maxWidth = storyCanvas.width - 100; const lineHeight = 52; const maxLinesCaption = 6; wrapTextCenterCanvas(ctx, caption || " ", captionX, captionY, maxWidth, lineHeight, maxLinesCaption); ctx.shadowColor = 'transparent'; const imageDataUrl = storyCanvas.toDataURL('image/png'); storyImage.src = imageDataUrl; downloadLinkStory.href = imageDataUrl; downloadLinkStory.download = `fakestory_${username.replace(/\s+/g, '_')}.png`; resultContainerStory.style.display = 'block'; errorDisplayStory.style.display = 'none'; } catch (e) { console.error("Error membuat story:", e); errorDisplayStory.textContent = `❌ Gagal membuat Fake Story: ${e.message}`; errorDisplayStory.style.display = 'block'; resultContainerStory.style.display = 'none'; } finally { loadingMessageStory.style.display = 'none'; } }); }
+        async function handleTikTokDouyinCommand() { const fullInput = commandInput.value.trim(); if (fullInput === "") return; addMessageToChatUI(fullInput, 'user', false, messagesAreaDownloader); commandInput.value = ""; const parts = fullInput.split(/\s+/); const command = parts[0].toLowerCase(); const queryUrl = parts.length > 1 ? parts.slice(1).join(" ") : ""; let platformName = ""; if ((command === ".tiktok" || command === ".tt" || command === ".tiktod") && queryUrl) { if (!queryUrl.includes("tiktok.com/") && !queryUrl.includes("douyin.com/")) { addMessageToChatUI('URL TikTok/Douyin tidak valid!', 'bot', false, messagesAreaDownloader); return; } platformName = queryUrl.includes("tiktok.com/") ? "TikTok" : "Douyin"; } else if (command === ".douyin" && queryUrl) { if (!queryUrl.includes("douyin.com/")) { addMessageToChatUI('URL Douyin tidak valid!', 'bot', false, messagesAreaDownloader); return; } platformName = "Douyin"; } else { addMessageToChatUI('Perintah tidak dikenali atau format salah.<br>Contoh:<br><code>.tiktok &lt;url&gt;</code><br><code>.douyin &lt;url&gt;</code><br>Untuk fitur lain, klik ⋮', 'bot', true, messagesAreaDownloader); return; } const apiEndpoint = platformName.toLowerCase(); const apiUrl = `https://api.betabotz.eu.org/api/download/${apiEndpoint}?url=${encodeURIComponent(queryUrl)}&apikey=${TIKTOK_API_KEY}`; addMessageToChatUI(`⏳ Sedang memproses ${platformName} dari ${queryUrl.substring(0,30)}...`, 'bot', false, messagesAreaDownloader); try { const controller = new AbortController(); const timeoutId = setTimeout(() => controller.abort(), 60000); const response = await fetch(apiUrl, { signal: controller.signal }); clearTimeout(timeoutId); const data = await response.json(); if (!response.ok || !data || data.status !== true || !data.result) { const errorMessage = data.message || `Gagal mendapatkan data dari API ${platformName}.`; addMessageToChatUI(`❌ Error: ${errorMessage}`, 'bot', false, messagesAreaDownloader); return; } const res = data.result; const { video, title, title_audio, audio } = res; let resultHtml = `<p><strong>Platform:</strong> ${platformName}</p>`; resultHtml += `<p><strong>Judul:</strong> ${title || 'N/A'}</p>`; const videoUrl = Array.isArray(video) ? video[0] : video; const audioUrl = Array.isArray(audio) ? audio[0] : audio; let mediaFound = false; if (videoUrl) { resultHtml += `<video controls src="${videoUrl}" style="max-width:100%; border-radius: var(--border-radius-s);"></video>`; resultHtml += `<div class="download-links"><a href="${videoUrl}" target="_blank" download="${platformName.toLowerCase()}_video.mp4">Unduh Video</a></div>`; mediaFound = true; } if (audioUrl && (!videoUrl || videoUrl !== audioUrl)) { resultHtml += `<p style="margin-top:10px;"><strong>Audio:</strong> ${title_audio || 'Audio Terpisah'}</p>`; resultHtml += `<audio controls src="${audioUrl}" style="width:100%;"></audio>`; resultHtml += `<div class="download-links"><a href="${audioUrl}" target="_blank" download="${(title_audio || title || platformName.toLowerCase() + '_audio').replace(/[^a-z0-9_.-]/gi, '_')}.mp3">Unduh Audio</a></div>`; mediaFound = true; } if (!mediaFound) { resultHtml += `<p>Tidak ada media video atau audio yang bisa ditampilkan.</p>`; } addMessageToChatUI(resultHtml, 'bot', true, messagesAreaDownloader); } catch (e) { if (e.name === 'AbortError') { addMessageToChatUI(`🚧 Waktu permintaan habis saat menghubungi API ${platformName}. Coba lagi nanti.`, 'bot', false, messagesAreaDownloader); } else { addMessageToChatUI(`🚧 Terjadi kesalahan teknis (Downloader): ${e.message}`, 'bot', false, messagesAreaDownloader); } } }
+        if (sendButtonDownloader) { sendButtonDownloader.addEventListener('click', handleTikTokDouyinCommand); }
+        if (commandInput) { commandInput.addEventListener('keypress', function(event) { if (event.key === 'Enter') { event.preventDefault(); handleTikTokDouyinCommand(); } }); }
+
+        // --- Logika Group Chat (Dengan Fitur Baru) ---
+        // --- Logika Group Chat (Dengan Fitur Baru) ---
+function connectWebSocket() {
+    if (websocket && (websocket.readyState === WebSocket.OPEN || websocket.readyState === WebSocket.CONNECTING)) { return; }
+
+    // PASTIKAN ANDA MENGGUNAKAN URL DARI SCREENSHOT TERBARU ANDA DI SINI:
+    const WEBSOCKET_URL = 'wss://sf-mardi-grad-modes.trycloudflare.com';
+
+    // Untuk sementara, baris-baris untuk membuat URL dinamis ini bisa dikomentari atau dihapus dulu agar tidak bentrok:
+    /*
+    let wsProtocol;
+    if (window.location.protocol === "https:") {
+        wsProtocol = "wss:";
+    } else {
+        wsProtocol = "ws:";
+    }
+    const WEBSOCKET_URL_DINAMIS = `${wsProtocol}//${window.location.host}`;
+    */
+
+    // Ini untuk mengupdate tulisan di header dan di bawahnya
+    if(groupChatConnectionStatus) groupChatConnectionStatus.textContent = "Menghubungkan ke server chat...";
+    if(appStatus) appStatus.textContent = "Menghubungkan..."; 
+    
+    // ... sisa kode fungsi connectWebSocket Anda tetap sama ...
+
+    // Jangan lupa untuk menambahkan bagian ini jika belum ada di dalam fungsi connectWebSocket
+    // untuk menangani error koneksi dengan lebih jelas di console browser
+    if (!websocket || websocket.readyState === WebSocket.CLOSED) { // Hanya buat WebSocket baru jika belum ada atau sudah ditutup
+        websocket = new WebSocket(WEBSOCKET_URL);
+
+        websocket.onopen = (event) => {
+            console.log("WebSocket Terhubung via Acode Test!");
+            if(groupChatConnectionStatus) groupChatConnectionStatus.textContent = `Terhubung sebagai: ${userNickname}`;
+            if(appStatus) appStatus.textContent = `Terhubung sebagai: ${userNickname}`; // Update status di header
+            if(groupChatConnectionStatus) groupChatConnectionStatus.style.color = "var(--accent-green)";
+            addMessageToChatUI(`<i>Anda telah bergabung sebagai ${userNickname} (Test Acode)</i>`, 'system-message', true, messagesAreaGroupChat);
+            if (userProfilePictures[userNickname]) {
+                websocket.send(JSON.stringify({ type: 'profile_picture_update', nickname: userNickname, dataUrl: userProfilePictures[userNickname] }));
+            }
+        };
+
+        websocket.onmessage = async (event) => {
+            // ... (kode onmessage Anda yang sudah ada) ...
+            console.log("Pesan diterima (Acode Test):", event.data);
+             let messageTextContent;
+             if (event.data instanceof Blob) {
+                 try { messageTextContent = await event.data.text(); } catch (blobError) { addMessageToChatUI(event.data.toString(), 'group-in', false, messagesAreaGroupChat, "Info Server Error Blob"); return;  }
+             } else if (typeof event.data === 'string') { messageTextContent = event.data; }
+             else { messageTextContent = String(event.data); }
+
+             try {
+                 const messageData = JSON.parse(messageTextContent);
+                 if (messageData.type === 'message' && messageData.nickname && messageData.text) {
+                     if (messageData.nickname !== userNickname) {
+                         addMessageToChatUI(messageData.text, 'group-in', false, messagesAreaGroupChat, messageData.nickname);
+                     }
+                 } else if (messageData.type === 'file_message' && messageData.nickname && messageData.filename && messageData.filetype && messageData.filecontent) {
+                     if (messageData.nickname !== userNickname) {
+                         let mediaElement;
+                         if (messageData.filetype.startsWith('image/')) {
+                             mediaElement = document.createElement('img');
+                             mediaElement.src = messageData.filecontent; mediaElement.alt = messageData.filename;
+                             mediaElement.classList.add('media-attachment');
+                         } else if (messageData.filetype.startsWith('video/')) {
+                             mediaElement = document.createElement('video');
+                             mediaElement.src = messageData.filecontent; mediaElement.controls = true;
+                             mediaElement.classList.add('media-attachment');
+                         } else if (messageData.filetype.startsWith('audio/')) {
+                             mediaElement = document.createElement('audio');
+                             mediaElement.src = messageData.filecontent; mediaElement.controls = true;
+                             mediaElement.classList.add('media-attachment');
+                         } else {
+                             mediaElement = document.createElement('a');
+                             mediaElement.href = messageData.filecontent; mediaElement.textContent = `Unduh: ${messageData.filename}`;
+                             mediaElement.download = messageData.filename; mediaElement.classList.add('media-attachment');
+                         }
+                         addMessageToChatUI(null, 'group-in', true, messagesAreaGroupChat, messageData.nickname, mediaElement);
+                     }
+                 } else if (messageData.type === 'profile_picture_update' && messageData.nickname && messageData.dataUrl) {
+                     userProfilePictures[messageData.nickname] = messageData.dataUrl;
+                     if (messageData.nickname !== userNickname) {
+                          addMessageToChatUI(`<i>${messageData.nickname} memperbarui foto profil.</i>`, 'system-message', true, messagesAreaGroupChat);
+                          document.querySelectorAll('.message-bubble').forEach(bubble => {
+                              if (bubble.classList.contains('group-in') && bubble.querySelector('.sender-name')?.textContent === messageData.nickname) {
+                                  const ppImg = bubble.querySelector('.profile-pic-bubble');
+                                  if (ppImg) ppImg.src = messageData.dataUrl;
+                              }
+                          });
+                     }
+                 } else if (messageData.type === 'user_join' && messageData.nickname) { addMessageToChatUI(`<i>${messageData.nickname} telah bergabung.</i>`, 'system-message', true, messagesAreaGroupChat); }
+                 else if (messageData.type === 'user_leave' && messageData.nickname) { addMessageToChatUI(`<i>${messageData.nickname} telah keluar.</i>`, 'system-message', true, messagesAreaGroupChat); }
+                 else if (messageData.type === 'user_count_update' && typeof messageData.count === 'number') { 
+                     if(onlineUserCount) onlineUserCount.textContent = `${messageData.count} Online`;
+                 }
+                 else { console.warn("Struktur data JSON tidak dikenal (Acode Test):", messageData); addMessageToChatUI(messageTextContent, 'group-in', false, messagesAreaGroupChat, "Info Server (JSON Aneh)"); }
+             } catch (e) { addMessageToChatUI(messageTextContent, 'group-in', false, messagesAreaGroupChat, "Info Server"); }
+             if(messagesAreaGroupChat) messagesAreaGroupChat.scrollTop = messagesAreaGroupChat.scrollHeight;
+        };
+
+        websocket.onerror = (error) => {
+            console.error("WebSocket Error (Acode Test):", error);
+            if(groupChatConnectionStatus) groupChatConnectionStatus.textContent = "Error koneksi WebSocket.";
+            if(appStatus) appStatus.textContent = "Error Koneksi"; // Update status di header
+            if(groupChatConnectionStatus) groupChatConnectionStatus.style.color = "var(--error-color)";
+            addMessageToChatUI("<i>Gagal terhubung ke server chat (WebSocket Error).</i>", 'system-error', true, messagesAreaGroupChat);
+            if(onlineUserCount) onlineUserCount.textContent = "0 Online";
+        };
+
+        websocket.onclose = (event) => {
+            console.log("WebSocket Terputus (Acode Test):", event);
+            if(groupChatConnectionStatus) groupChatConnectionStatus.textContent = "Koneksi terputus. Mencoba lagi...";
+            if(appStatus) appStatus.textContent = "Terputus. Mencoba lagi..."; // Update status di header
+            if(groupChatConnectionStatus) groupChatConnectionStatus.style.color = "var(--error-color)";
+            addMessageToChatUI("<i>Koneksi ke server chat terputus. Akan mencoba lagi...</i>", 'system-error', true, messagesAreaGroupChat);
+            if(onlineUserCount) onlineUserCount.textContent = "0 Online"; 
+            if (currentView === 'groupchat') { // Hanya coba sambung ulang jika masih di tampilan grup chat
+                 // Hapus instance websocket lama sebelum mencoba lagi
+                 websocket = null;
+                 setTimeout(connectWebSocket, 5000); 
+            }
+        };
+    }
+}
+
+        function sendGroupMessage(text = null, payloadOverride = null) {
+            const messageText = text || groupChatMessageInput.value.trim();
+            // TODO: Generate unique message ID here for status tracking
+            const messageId = `msg-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+            if ((messageText || payloadOverride) && websocket && websocket.readyState === WebSocket.OPEN) {
+                const finalPayload = payloadOverride || { type: 'message', nickname: userNickname, text: messageText, id: messageId };
+                websocket.send(JSON.stringify(finalPayload));
+
+                if (finalPayload.type === 'message') {
+                    addMessageToChatUI(finalPayload.text, 'user', false, messagesAreaGroupChat, null, null, messageId);
+                } else if (finalPayload.type === 'file_message') {
+                    let mediaElement;
+                    if (finalPayload.filetype.startsWith('image/')) {
+                        mediaElement = document.createElement('img');
+                        mediaElement.src = finalPayload.filecontent; mediaElement.alt = finalPayload.filename;
+                    } else if (finalPayload.filetype.startsWith('video/')) {
+                        mediaElement = document.createElement('video');
+                        mediaElement.src = finalPayload.filecontent; mediaElement.controls = true;
+                    } else if (finalPayload.filetype.startsWith('audio/')) {
+                        mediaElement = document.createElement('audio');
+                        mediaElement.src = finalPayload.filecontent; mediaElement.controls = true;
+                    } else {
+                        mediaElement = document.createElement('p'); mediaElement.textContent = `Anda mengirim file: ${finalPayload.filename}`;
+                    }
+                    if(mediaElement) mediaElement.classList.add('media-attachment');
+                    addMessageToChatUI(null, 'user', true, messagesAreaGroupChat, null, mediaElement, messageId);
+                }
+
+                if(!text && !payloadOverride) groupChatMessageInput.value = "";
+                messagesAreaGroupChat.scrollTop = messagesAreaGroupChat.scrollHeight;
+            } else if (!websocket || websocket.readyState !== WebSocket.OPEN) {
+                addMessageToChatUI("Tidak terhubung ke server chat.", 'system-error', true, messagesAreaGroupChat);
+            }
+        }
+        if (sendGroupChatMessageButton) { sendGroupChatMessageButton.addEventListener('click', () => sendGroupMessage()); }
+        if (groupChatMessageInput) { groupChatMessageInput.addEventListener('keypress', (event) => { if (event.key === 'Enter') { event.preventDefault(); sendGroupMessage(); } }); }
+
+        // --- Menu Utama & Menu Grup Chat ---
+        if(menuButton && attachmentMenu) { menuButton.addEventListener('click', (event) => { event.stopPropagation(); attachmentMenu.style.display = attachmentMenu.style.display === 'block' ? 'none' : 'block'; if (groupChatAttachmentMenu.style.display === 'block') groupChatAttachmentMenu.style.display = 'none'; }); }
+        if (groupChatMenuButton && groupChatAttachmentMenu) {
+            groupChatMenuButton.addEventListener('click', (event) => { event.stopPropagation(); groupChatAttachmentMenu.style.display = groupChatAttachmentMenu.style.display === 'block' ? 'none' : 'block'; if (attachmentMenu.style.display === 'block') attachmentMenu.style.display = 'none'; });
+            groupChatAttachmentMenu.querySelectorAll('li').forEach(item => {
+                item.addEventListener('click', () => {
+                    const action = item.getAttribute('data-gaction');
+                    groupChatAttachmentMenu.style.display = 'none';
+                    if (action === 'send-image') { groupAttachmentInput.accept = "image/*"; groupAttachmentInput.onchange = handleGroupFileSend; groupAttachmentInput.click(); }
+                    else if (action === 'send-video') { groupAttachmentInput.accept = "video/*"; groupAttachmentInput.onchange = handleGroupFileSend; groupAttachmentInput.click(); }
+                    else if (action === 'send-audio') { groupAttachmentInput.accept = "audio/*"; groupAttachmentInput.onchange = handleGroupFileSend; groupAttachmentInput.click(); }
+                    else if (action === 'change-name') {
+                        const oldNickname = userNickname;
+                        const newNick = prompt("Masukkan nama panggilan baru:", oldNickname);
+                        if (newNick && newNick.trim() !== "" && newNick.trim() !== oldNickname) {
+                            userNickname = newNick.trim();
+                            if (websocket && websocket.readyState === WebSocket.OPEN) { groupChatConnectionStatus.textContent = `Terhubung sebagai: ${userNickname}`; }
+                            else { groupChatConnectionStatus.textContent = `Menghubungkan sebagai: ${userNickname}...`; }
+                            addMessageToChatUI(`<i>Anda mengubah nama menjadi ${userNickname}</i>`, 'system-message', true, messagesAreaGroupChat);
+                        }
+                    } else if (action === 'change-profile-pic') {
+                        profilePicInput.onchange = handleProfilePicChange;
+                        profilePicInput.click();
+                    }
+                });
+            });
+        }
+
+        function handleGroupFileSend(event) {
+            const file = event.target.files[0];
+            if (file) {
+                let maxSizeMB = 5; // Default for images
+                let fileTypeCategory = 'file';
+                if (file.type.startsWith('image/')) { maxSizeMB = 5; fileTypeCategory = 'gambar'; }
+                else if (file.type.startsWith('video/')) { maxSizeMB = 10; fileTypeCategory = 'video'; }
+                else if (file.type.startsWith('audio/')) { maxSizeMB = 10; fileTypeCategory = 'audio'; }
+
+                if (file.size > maxSizeMB * 1024 * 1024) {
+                    alert(`Ukuran ${fileTypeCategory} terlalu besar! Maksimum ${maxSizeMB}MB.`);
+                    groupAttachmentInput.value = null; return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e_reader) => {
+                    const filePayload = { type: 'file_message', nickname: userNickname,
+                        filename: file.name, filetype: file.type, filecontent: e_reader.target.result // data URL (Base64)
+                    };
+                    sendGroupMessage(null, filePayload);
+                };
+                reader.onerror = (error) => { console.error("Error membaca file:", error); addMessageToChatUI("Gagal memproses file.", 'system-error', true, messagesAreaGroupChat); };
+                reader.readAsDataURL(file);
+                groupAttachmentInput.value = null;
+            }
+        }
+
+        function handleProfilePicChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const MAX_PROFILE_PIC_SIZE_MB = 5; // Batas 5MB untuk foto profil
+                if (file.size > MAX_PROFILE_PIC_SIZE_MB * 1024 * 1024) {
+                    alert(`Ukuran foto profil terlalu besar! Maksimum ${MAX_PROFILE_PIC_SIZE_MB}MB.`);
+                    profilePicInput.value = null; return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e_reader) => {
+                    const dataUrl = e_reader.target.result;
+                    userProfilePictures[userNickname] = dataUrl;
+                    localStorage.setItem(`profilePic_${userNickname}`, dataUrl); // Simpan di localStorage
+
+                    if (websocket && websocket.readyState === WebSocket.OPEN) {
+                        websocket.send(JSON.stringify({ type: 'profile_picture_update', nickname: userNickname, dataUrl: dataUrl }));
+                    }
+                    addMessageToChatUI("<i>Foto profil Anda diperbarui.</i>", 'system-message', true, messagesAreaGroupChat);
+                    // Update foto profil di header aplikasi
+                    appAvatar.style.backgroundImage = `url('${dataUrl}')`; // Jika avatar di header adalah img
+                    appAvatar.textContent = ''; // Hapus teks jika ada
+
+                    // Update foto profil di pesan lama yang sudah ada di UI (dari diri sendiri)
+                    document.querySelectorAll('.message-bubble.user').forEach(bubble => {
+                        const ppImg = bubble.querySelector('.profile-pic-bubble');
+                        if (ppImg) ppImg.src = dataUrl;
+                    });
+                };
+                reader.onerror = (error) => console.error("Error membaca foto profil:", error);
+                reader.readAsDataURL(file);
+                profilePicInput.value = null;
+            }
+        }
+        // Load foto profil sendiri dari localStorage saat init
+        if(localStorage.getItem(`profilePic_${userNickname}`)){
+            userProfilePictures[userNickname] = localStorage.getItem(`profilePic_${userNickname}`);
+            // Update app avatar jika foto profil dimuat
+            // appAvatar.style.backgroundImage = `url('${userProfilePictures[userNickname]}')`;
+            // appAvatar.textContent = '';
+        }
+
+
+        window.addEventListener('click', (e) => {
+            if (attachmentMenu.style.display === 'block' && !menuButton.contains(e.target) && !attachmentMenu.contains(e.target)) { attachmentMenu.style.display = 'none'; }
+            if (groupChatAttachmentMenu.style.display === 'block' && !groupChatMenuButton.contains(e.target) && !groupChatAttachmentMenu.contains(e.target)) { groupChatAttachmentMenu.style.display = 'none'; }
+        });
+        attachmentMenu.querySelectorAll('li').forEach(item => { item.addEventListener('click', () => { const action = item.getAttribute('data-action'); attachmentMenu.style.display = 'none'; if (action === 'show-downloader') showDownloaderView(); else if (action === 'show-fakestory') showFakeStoryView(); else if (action === 'show-groupchat') showGroupChatView(); else if (action === 'info-tiktok') { showDownloaderView(); addMessageToChatUI("Ketik:<br><code>.tiktok https://url_tiktok_anda</code><br><code>.douyin https://url_douyin_anda</code>", 'bot', true, messagesAreaDownloader); } }); });
+
+        showDownloaderView();
+        addMessageToChatUI("Mode Pengunduh Aktif. Ketik perintah atau klik '⋮' untuk opsi lain.", 'bot', true, messagesAreaDownloader);
+    });
+    </script>
+</body>
+</html>
