@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}
+/* Style untuk input checkbox/radio kustom */
+.poll-input-element {
+    display: none;
+}
+.poll-vote-option .option-check-icon {
+    display: none;
+}
+.poll-input-element:checked ~ .flex .option-check-icon {
+    display: inline-block;
+}
